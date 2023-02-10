@@ -1,4 +1,46 @@
-<h1>Welcome</h1>
-<p>How ya doin?</p>
+<%# get to cmd prompt and get to users/pasha/documents/ this folder to launch the program the run live port on vs code%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Moonlight Hotel</title>
+        <%= stylesheet_link_tag "style.css" %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body class="background">
+        <div>
+           <!-- <img src="logo.png" alt="Logo" class="logo">-->
+            <h1 class="Title">Moonlight Hotel</h1>
+        </div>
 
-<%= link_to 'reserve room', welcome_booking_path %>
+        <div class="container">
+            <div class="box">
+                <h3>Standard Room</h3>
+                <p class="base_price">$100</p>
+                <p class="full_price">$110 includes taxes & fees</p>
+                <a class="redirect-link" href="standard-booking.html">Reserve Now</a>
+            </div>
+            <div class="box">
+                <h3>Deluxe Room</h3>
+                <p class="base_price">$150</p>
+                <p class="full_price">$170 includes taxes & fees</p>
+                <a class="redirect-link" href="deluxe-booking.html">Reserve Now</a>
+            </div>
+            <div class="box">
+                <h3>Connecting Room</h3>
+                <p class="base_price">$200</p>
+                <p class="full_price">$220 includes taxes & fees</p>
+                <a class="redirect-link" href="connected-booking.html">Reserve Now</a>
+              </div>
+            <div class="box">
+                <h3>Suite</h3>
+                <p class="base_price">$200</p>
+                <p class="full_price">$230 includes taxes & fees</p>
+                <a class="redirect-link" href="suite-booking.html">Reserve Now</a>
+            </div>
+          </div>          
+    </body>
+</html>
+
+
+
