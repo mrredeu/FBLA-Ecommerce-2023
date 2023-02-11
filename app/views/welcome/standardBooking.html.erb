@@ -8,14 +8,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="background">
+        <h1 style="text-align:center;">Standard Room</h1>
         <div class="slideshow-container">
             <!-- Full-width images with number and caption text -->
             <div class="mySlides fade">
-                <img src="/app/assets/images/standard1.jpg">
+                <%= image_tag('standard1.jpg', style:"width:500px;height:auto;") %>
             </div>
 
             <div class="mySlides fade">
-                <img src="/app/assets/images/standard2.jpg">
+                <%= image_tag('standard2.jpg', style:"width:500px;height:auto;") %>
             </div>
 
             <!-- Next and previous buttons -->
@@ -23,12 +24,6 @@
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
             <br>
-
-            <!-- The dots/circles -->
-            <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
         </div>
     </body>
 </html>
