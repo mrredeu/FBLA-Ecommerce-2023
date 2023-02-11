@@ -23,6 +23,7 @@
     padding: 20px;
     background-color: white;
     margin: 10px;
+    border-radius: 5px;
 }
 
 .box h3 {
@@ -50,7 +51,7 @@
     border: 1vw;
     border-color: rgb(87, 132, 255);
     background-color: rgb(87, 132, 255);
-    border-radius: 5px;
+    border-radius: 3px;
     color:black;
 
     margin: 0px;
