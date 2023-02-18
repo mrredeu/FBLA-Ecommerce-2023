@@ -8,9 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="background">
-        <div>
-           <!-- <img src="logo.png" alt="Logo" class="logo">-->
-            <h1 class="Title">Moonlight Hotel</h1>
+        <div style="width: 100%; display:flex;">
+            <div style="max-width: 20%;">
+                <%= image_tag('logo.png', style:"width:100%") %>
+            </div>
+            <div style="width: 80%;">
+                <h1 class="Title">Moonlight Hotel</h1>
+            </div>
         </div>
 
         <div class="container">
@@ -26,22 +30,37 @@
                 </div>
             </div>
             <div class="box">
-                <h3>Deluxe Room</h3>
-                <p class="base_price">$150</p>
-                <p class="full_price">$170 includes taxes & fees</p>
-                <%= link_to 'Reserve Room', welcome_deluxeBooking_path, class:"redirect-link"%>
+                <div class="images-container">
+                    <%= image_tag('deluxe1.jfif', class:"images") %>
+                </div>
+                <div class="text">
+                    <h3>Deluxe Room</h3>
+                    <p class="base_price">$150</p>
+                    <p class="full_price">$170 includes taxes & fees</p>
+                    <%= link_to 'Reserve Room', welcome_deluxeBooking_path, class:"redirect-link"%>
+                </div>
             </div>
             <div class="box">
-                <h3>Connecting Room</h3>
-                <p class="base_price">$200</p>
-                <p class="full_price">$220 includes taxes & fees</p>
-                <%= link_to 'Reserve Room', welcome_connectedBooking_path, class:"redirect-link"%>
+                <div class="images-container">
+                    <%= image_tag('connecting1.jpg', class:"images") %>
+                </div>
+                <div class="text">
+                    <h3>Connecting Room</h3>
+                    <p class="base_price">$200</p>
+                    <p class="full_price">$220 includes taxes & fees</p>
+                    <%= link_to 'Reserve Room', welcome_connectedBooking_path, class:"redirect-link"%>
+                </div>
               </div>
             <div class="box">
-                <h3>Suite</h3>
-                <p class="base_price">$200</p>
-                <p class="full_price">$230 includes taxes & fees</p>
-                <%= link_to 'Reserve Room', welcome_suiteBooking_path, class:"redirect-link"%>
+                <div class="images-container">
+                    <%= image_tag('suite1.jfif', class:"images") %>
+                </div>
+                <div class="text">
+                    <h3>Suite</h3>
+                    <p class="base_price">$200</p>
+                    <p class="full_price">$230 includes taxes & fees</p>
+                    <%= link_to 'Reserve Room', welcome_suiteBooking_path, class:"redirect-link"%>
+                </div>
             </div>
         </div>  
         <h1 style="text-align: center; font-size: vw;">Our Location</h1>  
