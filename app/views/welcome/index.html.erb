@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Moonlight Hotel</title>
-        <%= stylesheet_link_tag "style.css" %>
+        <%= stylesheet_link_tag "main.css" %>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="background">
@@ -15,10 +15,15 @@
 
         <div class="container">
             <div class="box">
-                <h3>Standard Room</h3>
-                <p class="base_price">$100</p>
-                <p class="full_price">$110 includes taxes & fees</p>
-                <%= link_to 'Reserve Room', welcome_standardBooking_path, class:"redirect-link"%>
+                <div class="images-container">
+                    <%= image_tag('standard1.jpg', class:"images") %>
+                </div>
+                <div class="text">
+                    <h3>Standard Room</h3>
+                    <p class="base_price">$100</p>
+                    <p class="full_price">$110 includes taxes & fees</p>
+                    <%= link_to 'Reserve Room', welcome_standardBooking_path, class:"redirect-link"%>
+                </div>
             </div>
             <div class="box">
                 <h3>Deluxe Room</h3>
@@ -38,7 +43,11 @@
                 <p class="full_price">$230 includes taxes & fees</p>
                 <%= link_to 'Reserve Room', welcome_suiteBooking_path, class:"redirect-link"%>
             </div>
-          </div>          
+        </div>  
+        <h1 style="text-align: center; font-size: vw;">Our Location</h1>  
+        <div class="Location">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3314.7267749939356!2d-117.9229038839461!3d33.81936333741198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcd62b3434c4b1%3A0x4ee319f1b1bc74d1!2sAnaheim%20Majestic%20Garden%20Hotel!5e0!3m2!1sen!2sus!4v1676434017996!5m2!1sen!2sus" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+        </div>
     </body>
 </html>
 

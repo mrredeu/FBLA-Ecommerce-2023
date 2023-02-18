@@ -2,7 +2,7 @@
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 500px;
+  max-width: max-content;
   position: relative;
   margin: auto;
   float: left;
@@ -10,6 +10,8 @@
 
 /* Hide the images by default */
 .mySlides {
+  display: flex;
+  width: 100%;
   display:none;
 }
 
