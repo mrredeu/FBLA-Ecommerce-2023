@@ -29,87 +29,157 @@
             <a class="next" onclick="changeSlide(1)">&#10095;</a>
         </div>
         <div class="calendar">
-            <div class="calendar-header">
-                <a href="#" class="calendar-control prev">&lt;</a>
-                <div class="calendar-title"></div>
-                <a href="#" class="calendar-control next">&gt;</a>
-            </div>
-            <div class="calendar-body">
-                <div class="calendar-row week-days">
-                <div class="calendar-cell">Sun</div>
-                <div class="calendar-cell">Mon</div>
-                <div class="calendar-cell">Tue</div>
-                <div class="calendar-cell">Wed</div>
-                <div class="calendar-cell">Thu</div>
-                <div class="calendar-cell">Fri</div>
-                <div class="calendar-cell">Sat</div>
+            <div class="calendar-container">
+                <div class="calendar-input">
+                    <label for="check-in">Check-In</label>
+                    <input type="text" id="check-in" class="date-input">
                 </div>
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script>
-                    $(function() {
-                        var date = new Date();
-                        renderCalendar(date.getMonth(), date.getFullYear());
-
-                        $('.calendar .prev').click(function() {
-                            date.setMonth(date.getMonth() - 1);
-                            renderCalendar(date.getMonth(), date.getFullYear());
-                        });
-
-                        $('.calendar .next').click(function() {
-                            date.setMonth(date.getMonth() + 1);
-                            renderCalendar(date.getMonth(), date.getFullYear());
-                        });
-
-                        function renderCalendar(month, year) {
-                            $('.calendar-body .calendar-row:not(:first-of-type)').remove();
-                            $('.calendar-title').text(getMonthName(month) + ' ' + year);
-                            var daysInMonth = new Date(year, month + 1, 0).getDate();
-                            var firstDayOfMonth = new Date(year, month, 1).getDay();
-
-                            var currentDay = 1;
-                            var lastDayOfPrevMonth = new Date(year, month, 0).getDate();
-                            var prevMonthDaysToShow = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
-                            var prevMonthStart = lastDayOfPrevMonth - prevMonthDaysToShow + 1;
-
-                            for (var i = 0; i < 6; i++) {
-                            var row = $('<div class="calendar-row"></div>');
-
-                            for (var j = 0; j < 7; j++) {
-                                var cell = $('<div class="calendar-cell"></div>');
-
-                                if (i === 0 && j < firstDayOfMonth) {
-                                    cell.text(prevMonthStart).addClass('prev-month');
-                                    prevMonthStart++;
-                                } else if (currentDay > daysInMonth) {
-                                    cell.text(currentDay - daysInMonth).addClass('next-month');
-                                    currentDay++;
-                                } else {
-                                    cell.text(currentDay);
-                                    currentDay++;
-                                }
-
-                                if (cell.text() == new Date().getDate() && month == new Date().getMonth() && year == new Date().getFullYear()) {
-                                    cell.addClass('today');
-                                }
-
-                                if (Math.random() < 0.2) {
-                                    cell.addClass('event');
-                                } else if (Math.random() < 0.4) {
-                                    cell.addClass('booked');
-                                }
-
-                                row.append(cell);
-                            }
-                            $('.calendar-body').append(row);
-                            }
-                        }
-                        function getMonthName(month) {
-                            var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                            return monthNames[month];
-                        }
-                        });
-                </script>
+                <div class="calendar-input">
+                    <label for="check-out">Check-Out</label>
+                    <input type="text" id="check-out" class="date-input">
+                </div>
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button class="prev-month">&#8249;</button>
+                        <h2 class="calendar-title"></h2>
+                        <button class="next-month">&#8250;</button>
+                    </div>
+                    <div class="calendar-body">
+                    <div class="calendar-row">
+                        <div class="calendar-cell">S</div>
+                        <div class="calendar-cell">M</div>
+                        <div class="calendar-cell">T</div>
+                        <div class="calendar-cell">W</div>
+                        <div class="calendar-cell">T</div>
+                        <div class="calendar-cell">F</div>
+                        <div class="calendar-cell">S</div>
+                    </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var months = [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                    'August',
+                    'September',
+                    'October',
+                    'November',
+                    'December'
+                ];
+
+                var currentDate = new Date();
+                var currentYear = currentDate.getFullYear();
+                var currentMonth = currentDate.getMonth();
+                var currentDay = currentDate.getDate();
+
+                var selectedCheckInDate = null;
+                var selectedCheckOutDate = null;
+
+                var checkInInput = $('#check-in');
+                var checkOutInput = $('#check-out');
+
+                function populateCalendar(month, year) {
+                    var monthTitle = document.querySelector('.calendar-title');
+                    monthTitle.textContent = months[month];
+
+                    var daysInMonth = new Date(year, month + 1, 0).getDate();
+                    var firstDay = new Date(year, month, 1).getDay();
+                    var lastDay = new Date(year, month, daysInMonth).getDay();
+
+                    var days = [];
+
+                    for (var i = 1; i <= daysInMonth; i++) {
+                        days.push({
+                            day: i,
+                            month: month,
+                            year: year
+                        });
+                    }
+
+                    for (var i = 0; i < firstDay; i++) {
+                        days.unshift(null);
+                    }
+
+                    for (var i = lastDay; i < 6; i++) {
+                        days.push(null);
+                    }
+
+                    var calendarBody = $('.calendar-body');
+                    calendarBody.empty();
+
+                    days.forEach(function(day) {
+                        var cell = $('<div class="calendar-cell"></div>');
+
+                        if (day === null) {
+                            cell.addClass('disabled');
+                        } else {
+                            cell.text(day.day);
+
+                        if (selectedCheckInDate !== null && selectedCheckOutDate === null) {
+                            var checkInDate = new Date(selectedCheckInDate.year,selectedCheckInDate.month,selectedCheckInDate.day
+                        );
+
+                        var currentDate = new Date(day.year, day.month, day.day);
+                        if (currentDate > checkInDate) {
+                            cell.addClass('active');
+                        }
+                        } else if (selectedCheckInDate === null && selectedCheckOutDate === null) {
+                        var currentDate = new Date(day.year, day.month, day.day);
+
+                        if (currentDate.getFullYear() === currentYear &&
+                            currentDate.getMonth() === currentMonth &&
+                            currentDate.getDate() === currentDay) {
+                                cell.addClass('active');
+                            }
+                        }
+                    }
+
+                    cell.on('click', function() {
+                        if (selectedCheckInDate === null) {
+                            selectedCheckInDate = day;
+                            checkInInput.val(months[month] + ' ' + day.day + ', ' + year);
+                        } else if (selectedCheckOutDate === null) {
+                            selectedCheckOutDate = day;
+                            checkOutInput.val(months[month] + ' ' + day.day + ', ' + year);
+                        } else {
+                            selectedCheckInDate = day;
+                            selectedCheckOutDate = null;
+                            checkInInput.val(months[month] + ' ' + day.day + ', ' + year);
+                            checkOutInput.val('');
+                        }
+                        populateCalendar(month, year);
+                    });
+                    calendarBody.append(cell);
+                    });
+                }
+
+                populateCalendar(currentMonth, currentYear);
+                $('.prev-month').on('click', function() {
+                    currentMonth--;
+                    if (currentMonth < 0) {
+                        currentMonth = 11;
+                        currentYear--;
+                    }
+                    populateCalendar(currentMonth, currentYear);
+                });
+
+                $('.next-month').on('click', function() {
+                    currentMonth++;
+                    if (currentMonth > 11){
+                        currentMonth = 0;
+                        currentYear++;
+                    }
+                populateCalendar(currentMonth, currentYear);
+                });
+            });
+        </script>
     </body>
 </html>
