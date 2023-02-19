@@ -1,16 +1,32 @@
 * {box-sizing:border-box}
-
-.slideshow-container {
+/*Title + room type*/
+.Title {
+  text-align: center;
+  font-size: 35px;
   width: 100%;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*image slider*/
+.slideshow-container {
   position: relative;
+  width: 100%;
   margin: auto;
   float: left;
 }
 
 .mySlides {
-  display: flex;
-  max-width: 100%;
   display:none;
+}
+
+.mySlides img{
+  width: 100%;
+  max-width: 100%;
 }
 
 .prev, .next {
@@ -45,4 +61,75 @@
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+/*calendar*/
+.calendar {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f7f7f7;
+  font-weight: bold;
+}
+
+.calendar-control {
+  color: #000;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.calendar-title {
+  font-size: 18px;
+}
+
+.calendar-body {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+
+.week-days .calendar-cell {
+  font-weight: bold;
+}
+
+.calendar-cell {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.calendar-cell:hover {
+  background-color: #eee;
+}
+
+.calendar-cell.today {
+  background-color: #fff2b2;
+  font-weight: bold;
+}
+
+.calendar-cell.event {
+  background-color: #d4edda;
+  font-weight: bold;
+}
+
+.calendar-cell.booked {
+  background-color: #f8d7da;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+  .calendar-cell {
+    flex-basis: calc(100% / 7);
+  }
 }
