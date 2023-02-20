@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Moonlight Hotel</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .navbar {
+                display: flex;
+                justify-content: center;
+
+            }
+            .navbar-item {
+                padding: 0 20px;
+                font-size: 20px;
+                text-decoration: none;
+                color: black;
+            }
+            .navbar-item:hover {
+                color: #1990FF;
+            }
+        </style>
+    </head>
+    <body class="background">
+        <div class="main">
+            <div style="width: 100%; display:flex;">
+                <div style="max-width: 20%;">
+                    <%= image_tag('logo.png', style:"width:100%") %>
+                </div>
+                <div style="width: 80%;">
+                    <h1 class="Title">Moonlight Hotel</h1>
+                </div>
+            </div>
+
+            <nav class="navbar">
+                <%= link_to 'Rooms', welcome_index_path, class:"navbar-item"%>
+                <%= link_to 'Attrations', welcome_attractions_path, class:"navbar-item"%>
+                <%= link_to 'About Us', welcome_aboutUs_path, class:"navbar-item"%>
+            </nav>
+        </div>
+        <p style="text-align:center;font-size:17px;">
+            Welcome to Moonlight Hotel! We are a family-owned and operated business that takes pride in providing exceptional hospitality to our guests. Our goal is to create a comfortable and welcoming environment where you can relax and enjoy your stay.
+            We offer a wide range of amenities, including spacious and well-appointed rooms, a fitness center, a swimming pool, and complimentary breakfast. Whether you're here for business or pleasure, we strive to make your experience with us as enjoyable and stress-free as possible.
+            Our dedicated team of staff members are always on hand to help with anything you need, from restaurant recommendations to travel arrangements. We want to ensure that your time with us is unforgettable, and we'll do everything we can to make sure you leave feeling refreshed and rejuvenated.
+            Thank you for considering our hotel for your stay. We look forward to welcoming you and showing you why we're the best choice for your lodging needs.
+        </p>
+    </body>
+</html>

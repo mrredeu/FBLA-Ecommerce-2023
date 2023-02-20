@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Moonlight Hotel</title>
+        <%= stylesheet_link_tag "attractions.css" %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .navbar {
+                display: flex;
+                justify-content: center;
+
+            }
+            .navbar-item {
+                padding: 0 20px;
+                font-size: 20px;
+                text-decoration: none;
+                color: black;
+            }
+            .navbar-item:hover {
+                color: #1990FF;
+            }
+        </style>
+    </head>
+    <body class="background">
+        <div class="main">
+            <div style="width: 100%; display:flex;">
+                <div style="max-width: 20%;">
+                    <%= image_tag('logo.png', style:"width:100%") %>
+                </div>
+                <div style="width: 80%;">
+                    <h1 class="Title">Moonlight Hotel</h1>
+                </div>
+            </div>
+
+            <nav class="navbar">
+                <%= link_to 'Rooms', welcome_index_path, class:"navbar-item"%>
+                <%= link_to 'Attrations', welcome_attractions_path, class:"navbar-item"%>
+                <%= link_to 'About Us', welcome_aboutUs_path, class:"navbar-item"%>
+            </nav>
+        </div>
+        <div>
+            <h1 style="text-align:center;margin:0;">Attractions Near Us</h1>
+            <div>
+                <h2 style="text-align:center;margin-bottom:0;">1. DisneyLand</h2>  
+                <div class="Location">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3315.008402645685!2d-117.92116825017537!3d33.812096237701475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcd7d12b3b5e6b%3A0x2ef62f8418225cfa!2sDisneyland%20Park!5e0!3m2!1sen!2sus!4v1676842706428!5m2!1sen!2sus" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+                </div>
+            </div>
+            <div>
+                <h2 style="text-align:center;margin-bottom:0;">2. Knott's Berry Farm</h2>  
+                <div class="Location">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.75966000579!2d-118.00242055017432!3d33.8443082360135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd295ff57f78a3%3A0xae8e394e901e3055!2sKnott&#39;s%20Berry%20Farm!5e0!3m2!1sen!2sus!4v1676843076048!5m2!1sen!2sus" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div>
+                <h2 style="text-align:center;margin-bottom:0;">3. Universal Studios</h2>  
+                <div class="Location">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3302.321296183902!2d-118.35557235016451!3d34.1381212205536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2be4f253238cf%3A0xd3dd5027799c9a71!2sUniversal%20Studios%20Hollywood!5e0!3m2!1sen!2sus!4v1676843057000!5m2!1sen!2sus" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+                </div>
+            </div>
+            <div>
+                <h2 style="text-align:center;margin-bottom:0;">4. Huntington Beach</h2>  
+                <div class="Location">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106191.55903395684!2d-118.0007016669396!3d33.72224115773488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd2422f9c82ab5%3A0x45ed85c9a4663b01!2sHuntington%20Beach%2C%20CA!5e0!3m2!1sen!2sus!4v1676843034781!5m2!1sen!2sus" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div>
+                <h2 style="text-align:center;margin-bottom:0;">5. Angel Stadium</h2>  
+                <div class="Location">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3315.464956176279!2d-117.88492615017577!3d33.80031243831871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcd79c883eb01d%3A0x2d8fe2eb50c3667a!2sAngel%20Stadium%20of%20Anaheim!5e0!3m2!1sen!2sus!4v1676843007823!5m2!1sen!2sus" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div>
+                <h2 style="text-align:center;margin-bottom:0;">6. Discovery Cube Orange County</h2>  
+                <div class="Location">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.6287461562033!2d-117.8700581501768!3d33.770258239891916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcd9c83ab6305f%3A0xf2dd641dd8aa7ffc!2sDiscovery%20Cube%20Orange%20County!5e0!3m2!1sen!2sus!4v1676842966235!5m2!1sen!2sus" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

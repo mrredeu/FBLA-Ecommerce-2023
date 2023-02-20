@@ -6,17 +6,40 @@
         <title>Moonlight Hotel</title>
         <%= stylesheet_link_tag "main.css" %>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .navbar {
+                display: flex;
+                justify-content: center;
+
+            }
+            .navbar-item {
+                padding: 0 20px;
+                font-size: 20px;
+                text-decoration: none;
+                color: black;
+            }
+            .navbar-item:hover {
+                color: #1990FF;
+            }
+        </style>
     </head>
     <body class="background">
-        <div style="width: 100%; display:flex;">
-            <div style="max-width: 20%;">
-                <%= image_tag('logo.png', style:"width:100%") %>
+        <div class="main">
+            <div style="width: 100%; display:flex;">
+                <div style="max-width: 20%;">
+                    <%= image_tag('logo.png', style:"width:100%") %>
+                </div>
+                <div style="width: 80%;">
+                    <h1 class="Title">Moonlight Hotel</h1>
+                </div>
             </div>
-            <div style="width: 80%;">
-                <h1 class="Title">Moonlight Hotel</h1>
-            </div>
-        </div>
 
+            <nav class="navbar">
+                <%= link_to 'Rooms', welcome_index_path, class:"navbar-item"%>
+                <%= link_to 'Attrations', welcome_attractions_path, class:"navbar-item"%>
+                <%= link_to 'About Us', welcome_aboutUs_path, class:"navbar-item"%>
+            </nav>
+        </div>
         <div class="price-range-feature">
             <label for="price-range">Filter by Price:</label>
             <input type="range" id="price-range" min="0" max="250" step="10" value="250">
