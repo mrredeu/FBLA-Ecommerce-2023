@@ -154,3 +154,10 @@
   background-color: #0071c5;
   color: #fff;
 }
+
+/*Room reserve button*/
+.reserve {
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+}

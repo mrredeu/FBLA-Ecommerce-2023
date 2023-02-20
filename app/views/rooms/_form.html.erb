@@ -1,3 +1,132 @@
+         
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  //create responsive calendar
+  $(document).ready(function() {
+    var months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ];
+
+    var currentDate = new Date();
+    var currentYear = currentDate.getFullYear();
+    var currentMonth = currentDate.getMonth();
+    var currentDay = currentDate.getDate();
+
+    var selectedCheckInDate = null;
+    var selectedCheckOutDate = null;
+
+    var checkInInput = $('#check-in');
+    var checkOutInput = $('#check-out');
+
+    function populateCalendar(month, year) {
+        var monthTitle = document.querySelector('.calendar-title');
+        monthTitle.textContent = months[month];
+
+        var daysInMonth = new Date(year, month + 1, 0).getDate();
+        var firstDay = new Date(year, month, 1).getDay();
+        var lastDay = new Date(year, month, daysInMonth).getDay();
+
+        var days = [];
+
+        for (var i = 1; i <= daysInMonth; i++) {
+            days.push({
+                day: i,
+                month: month,
+                year: year
+            });
+        }
+
+        for (var i = 0; i < firstDay; i++) {
+            days.unshift(null);
+        }
+
+        for (var i = lastDay; i < 6; i++) {
+            days.push(null);
+        }
+
+        var calendarBody = $('.calendar-body');
+        calendarBody.empty();
+
+        days.forEach(function(day) {
+            var cell = $('<div class="calendar-cell"></div>');
+
+            if (day === null) {
+                cell.addClass('disabled');
+            } else {
+                cell.text(day.day);
+
+            if (selectedCheckInDate !== null && selectedCheckOutDate === null) {
+                var checkInDate = new Date(selectedCheckInDate.year,selectedCheckInDate.month,selectedCheckInDate.day
+            );
+
+            var currentDate = new Date(day.year, day.month, day.day);
+            if (currentDate > checkInDate) {
+                cell.addClass('active');
+            }
+            } else if (selectedCheckInDate === null && selectedCheckOutDate === null) {
+            var currentDate = new Date(day.year, day.month, day.day);
+
+            if (currentDate.getFullYear() === currentYear &&
+                currentDate.getMonth() === currentMonth &&
+                currentDate.getDate() === currentDay) {
+                    cell.addClass('active');
+                }
+            }
+        }
+
+        cell.on('click', function() {
+            if (selectedCheckInDate === null) {
+                selectedCheckInDate = day;
+                checkInInput.val(year+'-'+('0' + (currentDate.getMonth()+1)).slice(-2)+'-'+('0' + currentDate.getDate()).slice(-2));
+            } else if (selectedCheckOutDate === null) {
+                selectedCheckOutDate = day;
+                //checkOutInput.val(months[month] + ' ' + day.day + ', ' + year);      
+                checkOutInput.val(year+'-'+('0' + (currentDate.getMonth()+1)).slice(-2)+'-'+('0' + currentDate.getDate()).slice(-2));
+            } else {
+                selectedCheckInDate = day;
+                selectedCheckOutDate = null;
+                checkInInput.val(year+'-'+('0' + (currentDate.getMonth()+1)).slice(-2)+'-'+('0' + currentDate.getDate()).slice(-2));
+                checkOutInput.val('');
+            }
+            populateCalendar(month, year);
+        });
+        calendarBody.append(cell);
+        });
+    }
+
+    populateCalendar(currentMonth, currentYear);
+    $('.prev-month').on('click', function() {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        populateCalendar(currentMonth, currentYear);
+    });
+
+    $('.next-month').on('click', function() {
+        currentMonth++;
+        if (currentMonth > 11){
+            currentMonth = 0;
+            currentYear++;
+        }
+    populateCalendar(currentMonth, currentYear);
+    });
+  });
+</script>
+
 <%= form_with(model: room) do |form| %>
   <% if room.errors.any? %>
     <div style="color: red">
@@ -12,26 +141,47 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, style: "display: none" %>
+    <%= form.text_field :name, style: "display: none", id:'roomType'%>
   </div>
 
   <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
+    <%= form.label :price, style: "display: none" %>
+    <%= form.text_field :price, style: "display: none", id:'totalPrice' %>
+  </div>
+
+  <div class="calendar">
+      <div class="calendar-container">
+          <div class="calendar-input">
+            <%= form.label :from_date, style: "display: block"%>
+            <%= form.date_field :from_date, id:"check-in", class:"date-input"%>
+          </div>
+          <div class="calendar-input">
+            <%= form.label :to_date, style: "display: block"%>
+            <%= form.date_field :to_date, id: "check-out", class:"date-input"%>
+          </div>
+          <div class="calendar">
+              <div class="calendar-header">
+                  <button class="prev-month">&#8249;</button>
+                  <h2 class="calendar-title"></h2>
+                  <button class="next-month">&#8250;</button>
+              </div>
+              <div class="calendar-body">
+                  <div class="calendar-row">
+                      <div class="calendar-cell">S</div>
+                      <div class="calendar-cell">M</div>
+                      <div class="calendar-cell">T</div>
+                      <div class="calendar-cell">W</div>
+                      <div class="calendar-cell">T</div>
+                      <div class="calendar-cell">F</div>
+                      <div class="calendar-cell">S</div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 
   <div>
-    <%= form.label :from_date, style: "display: block" %>
-    <%= form.datetime_field :from_date %>
-  </div>
-
-  <div>
-    <%= form.label :to_date, style: "display: block" %>
-    <%= form.datetime_field :to_date %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit value: "Reserve Room", class:'reserve'%>
   </div>
 <% end %>

@@ -35,7 +35,7 @@
             </div>
 
             <nav class="navbar">
-                <%= link_to 'Rooms', welcome_index_path, class:"navbar-item"%>
+                <%= link_to 'Rooms', welcome_main_path, class:"navbar-item"%>
                 <%= link_to 'Attrations', welcome_attractions_path, class:"navbar-item"%>
                 <%= link_to 'About Us', welcome_aboutUs_path, class:"navbar-item"%>
             </nav>
@@ -55,7 +55,7 @@
                     <h3>Standard Room</h3>
                     <p class="base_price">$100</p>
                     <p class="full_price">$110 includes taxes & fees</p>
-                    <%= link_to 'Reserve Room', welcome_standardBooking_path, class:"redirect-link"%>
+                    <%= link_to 'Reserve Room', rooms_path, class:"redirect-link"%>
                 </div>
             </div>
             <div class="box" data-price="150">
