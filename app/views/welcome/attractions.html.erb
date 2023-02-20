@@ -3,9 +3,44 @@
     <head>
         <meta charset="UTF-8">
         <title>Moonlight Hotel</title>
-        <%= stylesheet_link_tag "attractions.css" %>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+            .background {
+                background-color: lightgrey;
+            }
+
+            .main {
+                outline: 5px solid black;
+                padding: 5px;
+                border-radius: 2px;
+                margin-bottom: 10px;
+            }
+
+            .Title {
+                text-align: center;
+                font-size: 35px;
+                width: 100%;
+            }
+
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .Location {
+                overflow: hidden;
+                padding-top: 80%;
+                position: relative;
+            }
+
+            .Location iframe{
+                border: 0;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
             .navbar {
                 display: flex;
                 justify-content: center;
