@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rooms
   get 'welcome/index'
   get 'welcome/standardBooking'
   get 'welcome/deluxeBooking'

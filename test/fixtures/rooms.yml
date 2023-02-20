@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  price: 9.99
+  from_date: 2023-02-19 17:25:38
+  to_date: 2023-02-19 17:25:38
+
+two:
+  name: MyString
+  price: 9.99
+  from_date: 2023-02-19 17:25:38
+  to_date: 2023-02-19 17:25:38
