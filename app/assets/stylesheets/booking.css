@@ -156,6 +156,10 @@
 }
 
 /*Room reserve button*/
+.reserve-container {
+  margin: 0 auto;
+}
+
 .reserve {
   text-align: center;
   text-decoration: none;

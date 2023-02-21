@@ -1,5 +1,3 @@
-         
-    
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   //create responsive calendar
@@ -154,11 +152,11 @@
       <div class="calendar-container">
           <div class="calendar-input">
             <%= form.label :from_date, style: "display: block"%>
-            <%= form.date_field :from_date, id:"check-in", class:"date-input"%>
+            <%= form.date_field :from_date, id:"check-in", class:"date-input", required: true %>
           </div>
           <div class="calendar-input">
             <%= form.label :to_date, style: "display: block"%>
-            <%= form.date_field :to_date, id: "check-out", class:"date-input"%>
+            <%= form.date_field :to_date, id: "check-out", class:"date-input", required: true %>
           </div>
           <div class="calendar">
               <div class="calendar-header">
@@ -181,7 +179,7 @@
       </div>
   </div>
 
-  <div>
+  <div class='reserve-container'>
     <%= form.submit value: "Reserve Room", class:'reserve'%>
   </div>
 <% end %>

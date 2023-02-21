@@ -1,63 +1,70 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="UTF-8">
-      <title>Moonlight Hotel</title>
-      <%= stylesheet_link_tag "booking.css" %>
-      <%= javascript_include_tag "slider.js" %>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <style>
-            .navbar {
-                display: flex;
-                justify-content: center;
+<script>
+  var params = ['roomType', 'bPrice', 'fPrice']
+  var ids = ["roomType", "base_price", "full_price"];
 
-            }
-            .navbar-item {
-                padding: 0 20px;
-                font-size: 20px;
-                text-decoration: none;
-                color: black;
-            }
-            .navbar-item:hover {
-                color: #1990FF;
-            }
-      </style>
-  </head>
-  <body class="background">
-    <div class="main">
-      <div style="width: 100%; display:flex;">
-        <div style="max-width: 20%;">
-            <%= image_tag('logo.png', style:"width:100%") %>
-        </div>
-        <div style="width: 80%;">
-            <h1 class="Title">Moonlight Hotel</h1>
-        </div>
-      </div>
-      
-      <nav class="navbar">
-        <%= link_to 'Rooms', welcome_main_path, class:"navbar-item"%>
-        <%= link_to 'Attrations', welcome_attractions_path, class:"navbar-item"%>
-        <%= link_to 'About Us', welcome_aboutUs_path, class:"navbar-item"%>
-      </nav>
-    </div>
+  for (var i = 0; i < ids.length; i++) {
+    var element = document.getElementById(ids[i]);
 
-    <h1 style="text-align:center;margin:0;" id='roomTypeH2'>Standard Room</h1>
-    <div class="slideshow-container">
-      <div class="mySlides fade">
-        <%=image_tag('standard1.jpg')%>
+    // If there is saved text content, set the element's text content to it
+    if (localStorage.getItem(ids[i])) {
+      console.log(localStorage.getItem(ids[i]))
+      if (localStorage.getItem(ids[i]) != null) {
+        element.textContent = localStorage.getItem(ids[i]);
+        console.log('working')
+      }else{
+        var urlParams = new URLSearchParams(window.location.search);
+        var getInfo = urlParams.get(params[i]);
+        element.textContent = getInfo;
+        localStorage.setItem(ids[i], getInfo);
+        console.log(localStorage.getItem(ids[i]))
+      }
+    }else{
+      var urlParams = new URLSearchParams(window.location.search);
+      var getInfo = urlParams.get(params[i]);
+      element.textContent = getInfo;
+      localStorage.setItem(ids[i], getInfo);
+      console.log(localStorage.getItem(ids[i]))
+    }
+  }
+</script>
+
+<body class="background">
+  <div class="main">
+    <div style="width: 100%; display:flex;">
+      <div style="max-width: 20%;">
+          <%= image_tag('logo.png', style:"width:100%") %>
       </div>
-      <div class="mySlides fade">
-        <%=image_tag('standard2.jpg')%>
-      </div>
-        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-        <a class="next" onclick="changeSlide(1)">&#10095;</a>
-      </div>
-      <div class="information">
-          <p>Price: $100</p>
-          <p>Full Price: $110</p>
+      <div style="width: 80%;">
+          <h1 class="Title">Moonlight Hotel</h1>
       </div>
     </div>
-  </body>
-</html>
+    
+    <nav class="navbar">
+      <%= link_to 'Rooms', welcome_main_path, class:"navbar-item"%>
+      <%= link_to 'Attrations', welcome_attractions_path, class:"navbar-item"%>
+      <%= link_to 'About Us', welcome_aboutUs_path, class:"navbar-item"%>
+    </nav>
+  </div>
+
+  <h1 style="text-align:center;margin:0;" id='roomType'></h1>
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <%=image_tag('standard1.jpg')%>
+    </div>
+    <div class="mySlides fade">
+      <%=image_tag('standard2.jpg')%>
+    </div>
+      <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+      <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div> 
+    <div class="information">
+        <p id='base_price'></p>
+        <p id='full_price'></p>
+    </div>
+  </div>
+</body>
+
 <br>
 <%= render "form", room: @room %>
+
+<%= javascript_include_tag "slider.js" %>

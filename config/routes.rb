@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'welcome/connectedBooking'
   get 'welcome/attractions'
   get 'welcome/aboutUs'
-  get 'rooms/index'
+  get 'rooms/new'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

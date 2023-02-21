@@ -14,7 +14,7 @@ function showSlide(n) {
     slides[i].style.display = "none";
   }
   for (let i = 0; i < slides.length; i++) {
-    slides[i].className = slides[i].className.replace("active", "");
+    slides[i].className = slides[i].className.replace(" active", "");
   }
   slides[slideIndex-1].style.display = "block";
   slides[slideIndex-1].className += " active";
