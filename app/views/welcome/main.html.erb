@@ -2,7 +2,7 @@
 <body class="background">
     <div class="main">
         <div style="width: 100%; display:flex;">
-            <div style="max-width: 20%;">
+            <div class="mainIMG">
                 <%= image_tag('logo.png', style:"width:100%") %>
             </div>
             <div style="width: 80%;">
@@ -18,8 +18,8 @@
     </div>
     <div class="price-range-feature">
         <label for="price-range">Filter by Price:</label>
-        <input type="range" id="price-range" min="0" max="250" step="10" value="250">
-        <span id="price-display">$0 - $250</span>
+        <input type="range" id="price-range" min="100" max="250" step="10" value="250">
+        <span id="price-display">$100 - $250</span>
     </div>
 
     <div class="container">
@@ -75,18 +75,19 @@
     </div>
 
     <script>
-        const priceRange = document.getElementById('price-range');
-        const priceDisplay = document.getElementById('price-display');
-        const roomBoxes = document.querySelectorAll('.box');
+        var priceRange = document.getElementById('price-range');
+        var priceDisplay = document.getElementById('price-display');
+        var roomBoxes = document.querySelectorAll('.box');
 
         // Update the price display when the price range changes
         priceRange.addEventListener('input', () => {
-            const maxPrice = priceRange.value;
-            priceDisplay.textContent = `$0 - $${maxPrice}`;
+            var maxPrice = priceRange.value;
+            var minPrice = priceRange.min;
+            priceDisplay.textContent = `$${minPrice} - $${maxPrice}`;
 
             // Show or hide each room box based on its price
             roomBoxes.forEach(roomBox => {
-                const roomPrice = parseInt(roomBox.dataset.price);
+                var roomPrice = parseInt(roomBox.dataset.price);
                 if (roomPrice <= maxPrice) {
                     roomBox.style.display = 'flex';
                 } else {

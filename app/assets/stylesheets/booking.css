@@ -1,10 +1,16 @@
-* {box-sizing:border-box}
+* {
+  box-sizing: border-box;
+}
 /*Title + room type*/
 .Title {
   text-align: center;
   font-size: 35px;
   width: 100%;
   cursor: pointer;
+}
+
+.mainIMG {
+  max-width: 20%;
 }
 
 .container {
@@ -21,15 +27,16 @@
 }
 
 .mySlides {
-  display:none;
+  display: none;
 }
 
-.mySlides img{
+.mySlides img {
   width: 100%;
   max-width: 100%;
 }
 
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -49,8 +56,9 @@
   border-radius: 3px 0 0 3px;
 }
 
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .fade {
@@ -59,8 +67,19 @@
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*description*/
+.information {
+  display: block;
+  font-size: 17px;
+  margin-left: 5px;
 }
 
 /*calendar*/
@@ -156,12 +175,10 @@
 }
 
 /*Room reserve button*/
-.reserve-container {
-  margin: 0 auto;
-}
-
 .reserve {
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px;
+  font-size: 30px;
+  background-color: #0071c5;
+  border-radius: 3px;
+  border: rgba(0, 0, 0, 0.8);
+  color: white;
 }

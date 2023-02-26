@@ -1,4 +1,60 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<%= form_with(model: room) do |form| %>
+    <% if room.errors.any? %>
+        <div style="color: red">
+            <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+            <ul>
+                <% room.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div>
+        <%= form.label :name, style: "display: none" %>
+        <%= form.text_field :name, style: "display: none", id:'roomTypeField'%>
+    </div>
+
+    <div>
+        <%= form.label :price, style: "display: none" %>
+        <%= form.text_field :price, style: "display: none", id:'totalPriceField' %>
+     </div>
+
+    <div class="calendar">
+        <div class="calendar-container">
+            <div class="calendar-input">
+                <%= form.label :from_date, style: "display: block"%>
+                <%= form.date_field :from_date, id:"check-in", class:"date-input", required: true %>
+            </div>
+            <div class="calendar-input">
+                <%= form.label :to_date, style: "display: block"%>
+                <%= form.date_field :to_date, id: "check-out", class:"date-input", required: true %>
+            </div>
+            <div class="calendar">
+                <div class="calendar-header">
+                    <button class="prev-month">&#8249;</button>
+                    <h2 class="calendar-title"></h2>
+                    <button class="next-month">&#8250;</button>
+                </div>
+                <div class="calendar-body">
+                    <div class="calendar-row">
+                      <div class="calendar-cell">S</div>
+                      <div class="calendar-cell">M</div>
+                      <div class="calendar-cell">T</div>
+                      <div class="calendar-cell">W</div>
+                      <div class="calendar-cell">T</div>
+                      <div class="calendar-cell">F</div>
+                      <div class="calendar-cell">S</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%= form.submit value: "Reserve Room", class:'reserve'%>
+<% end %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
   //create responsive calendar
   $(document).ready(function() {
@@ -124,62 +180,3 @@
     });
   });
 </script>
-
-<%= form_with(model: room) do |form| %>
-  <% if room.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
-
-      <ul>
-        <% room.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: none" %>
-    <%= form.text_field :name, style: "display: none", id:'roomType'%>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: none" %>
-    <%= form.text_field :price, style: "display: none", id:'totalPrice' %>
-  </div>
-
-  <div class="calendar">
-      <div class="calendar-container">
-          <div class="calendar-input">
-            <%= form.label :from_date, style: "display: block"%>
-            <%= form.date_field :from_date, id:"check-in", class:"date-input", required: true %>
-          </div>
-          <div class="calendar-input">
-            <%= form.label :to_date, style: "display: block"%>
-            <%= form.date_field :to_date, id: "check-out", class:"date-input", required: true %>
-          </div>
-          <div class="calendar">
-              <div class="calendar-header">
-                  <button class="prev-month">&#8249;</button>
-                  <h2 class="calendar-title"></h2>
-                  <button class="next-month">&#8250;</button>
-              </div>
-              <div class="calendar-body">
-                  <div class="calendar-row">
-                      <div class="calendar-cell">S</div>
-                      <div class="calendar-cell">M</div>
-                      <div class="calendar-cell">T</div>
-                      <div class="calendar-cell">W</div>
-                      <div class="calendar-cell">T</div>
-                      <div class="calendar-cell">F</div>
-                      <div class="calendar-cell">S</div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <div class='reserve-container'>
-    <%= form.submit value: "Reserve Room", class:'reserve'%>
-  </div>
-<% end %>

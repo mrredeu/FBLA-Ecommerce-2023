@@ -1,14 +1,38 @@
-.navbar {
+@media (max-width: 1024px) {
+  .navbar {
     display: flex;
     justify-content: center;
-
+  }
+  .navbar-item {
+    padding: 0 20px;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+  }
 }
-.navbar-item {
+
+@media (max-width: 425px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+  }
+  .navbar-item {
+    padding: 0 20px;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+  }
+  .navbar-item {
     padding: 0 20px;
     font-size: 20px;
     text-decoration: none;
     color: black;
-}
-.navbar-item:hover {
-    color: #1990FF;
+  }
 }

@@ -1,34 +1,150 @@
 .background {
-    background-color: lightgrey;
+  background-color: lightgrey;
 }
 
-.main {
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.text {
+  width: 50%;
+  height: 100%;
+}
+
+.images-container {
+  max-width: 50%;
+  max-height: 100%;
+  overflow: hidden;
+  display: flex;
+}
+
+.Location {
+  overflow: hidden;
+  padding-top: 80%;
+  position: relative;
+}
+
+.Location iframe {
+  border: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  border-radius: 5px;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    outline: 5px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .Title {
+    font-size: 50px;
+    width: max-content;
+    margin: 0;
+    margin-top: 40px;
+    margin-left: 10%;
+  }
+
+  .mainIMG {
+    width: 15%;
+    margin-left: 15%;
+  }
+
+  .price-range-feature {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 30px;
+  }
+
+  .box {
+    width: 100%;
+    height: 220px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 7px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .text h3 {
+    margin: 3%;
+    margin-bottom: 0%;
+    width: max-content;
+    font-size: 35px;
+  }
+
+  .base_price {
+    margin: 0% 0% 5% 3%;
+    width: max-content;
+    font-size: 35px;
+  }
+
+  .full_price {
+    margin: 0% 0% 3% 3%;
+    width: max-content;
+    font-size: 25px;
+  }
+
+  .redirect-link {
+    border: 5px;
+    margin: 3%;
+    margin-bottom: 0%;
+    border-color: rgb(137, 169, 255);
+    background-color: rgb(137, 169, 255);
+    border-radius: 2px;
+    color: black;
+    text-decoration: none;
+    width: max-content;
+    font-size: 40px;
+  }
+
+  .images-container > .images {
+    max-width: 100%;
+    border-radius: 2px;
+  }
+  .Location iframe {
+    height: 95%;
+    width: 95%;
+    margin: 0 2.5% 0 2.5%;
+  }
+}
+
+@media (max-width: 375px) {
+  .main {
     outline: 5px solid black;
     padding: 5px;
     border-radius: 2px;
     margin-bottom: 10px;
-}
+  }
 
-.Title {
-    text-align: center;
+  .Title {
     font-size: 35px;
-    width: 100%;
-}
+    width: max-content;
+    margin: 20px 0px 10px 10px;
+  }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-}
+  .mainIMG {
+    width: 20%;
+    margin-left: 0%;
+  }
 
-.price-range-feature {
+  .price-range-feature {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    font-size: 15px;
+  }
 
-.box {
-    width:100%;
-    height:110px;
+  .box {
+    width: 100%;
+    height: 110px;
     background-color: white;
     margin: 10px;
     border-radius: 5px;
@@ -36,66 +152,48 @@
     justify-content: center;
     overflow: hidden;
     display: flex;
-}
+  }
 
-.text {
-    width: 50%;
-    height: 100%;
-}
-
-.text h3 {
+  .text h3 {
     margin: 3%;
     margin-bottom: 0%;
     width: max-content;
     font-size: 20px;
-}
+  }
 
-.base_price {
+  .base_price {
     margin: 0% 0% 5% 3%;
     width: max-content;
     font-size: 20px;
-}
+  }
 
-.full_price {
+  .full_price {
     margin: 0% 0% 3% 3%;
     width: max-content;
     font-size: 15px;
-}
+  }
 
-.redirect-link {
+  .redirect-link {
     border: 5px;
     margin: 3%;
     margin-bottom: 0%;
     border-color: rgb(137, 169, 255);
     background-color: rgb(137, 169, 255);
     border-radius: 2px;
-    color:black;
+    color: black;
     text-decoration: none;
     width: max-content;
     font-size: 22px;
-}
+  }
 
-.images-container {
-    max-width: 50%;
-    max-height: 100%;
-}
-
-.images-container > .images{
+  .images-container > .images {
     max-width: 100%;
     border-radius: 2px;
-}
+  }
 
-.Location {
-    overflow: hidden;
-    padding-top: 80%;
-    position: relative;
-}
-
-.Location iframe{
-    border: 0;
+  .Location iframe {
     height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
     width: 100%;
+    margin: 0%;
+  }
 }
