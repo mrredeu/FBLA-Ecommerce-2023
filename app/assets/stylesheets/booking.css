@@ -158,6 +158,9 @@
   flex-grow: 1;
   font-size: 16px;
   cursor: pointer;
+  border: 1px solid black;
+  width: 35px;
+  height: 35px;
 }
 
 .calendar-cell:hover {
@@ -165,13 +168,15 @@
 }
 
 .calendar-cell.disabled {
-  color: #ccc;
+  color: black;
   cursor: default;
+  border: 0px solid black;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .calendar-cell.active {
   background-color: #0071c5;
-  color: #fff;
 }
 
 /*Room reserve button*/

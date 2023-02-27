@@ -54,142 +54,197 @@
     <%= form.submit value: "Reserve Room", class:'reserve'%>
 <% end %>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
-    //create responsive calendar
-    $(document).ready(function() {
-        var months = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December'
-        ];
-
-        var currentDate = new Date();
-        var currentYear = currentDate.getFullYear();
-        var currentMonth = currentDate.getMonth();
-        var currentDay = currentDate.getDate();
-
-        var selectedCheckInDate = null;
-        var selectedCheckOutDate = null;
-
-        var checkInInput = $('#check-in');
-        var checkOutInput = $('#check-out');
-
-        function populateCalendar(month, year) {
-            var monthTitle = document.querySelector('.calendar-title');
-            monthTitle.textContent = months[month];
-
-            var daysInMonth = new Date(year, month + 1, 0).getDate();
-            var firstDay = new Date(year, month, 1).getDay();
-            var lastDay = new Date(year, month, daysInMonth).getDay();
-
-            var days = [];
-
-            for (var i = 1; i <= daysInMonth; i++) {
-                days.push({
-                    day: i,
-                    month: month,
-                    year: year
-                });
-            }
-
-            for (var i = 0; i < firstDay; i++) {
-                days.unshift(null);
-            }
-
-            for (var i = lastDay; i < 6; i++) {
-                days.push(null);
-            }
-
-            var calendarBody = $('.calendar-body');
-            calendarBody.empty();
-
-            days.forEach(function(day) {
-                var cell = $('<div class="calendar-cell"></div>');
-
-                if (day === null) {
-                    cell.addClass('disabled');
-                } else {
-                    cell.text(day.day);
-
-                if (selectedCheckInDate !== null && selectedCheckOutDate === null) {
-                    var checkInDate = new Date(selectedCheckInDate.year,selectedCheckInDate.month,selectedCheckInDate.day
-                );
-
-                var currentDate = new Date(day.year, day.month, day.day);
-                if (currentDate > checkInDate) {
-                    cell.addClass('active');
-                }
-                } else if (selectedCheckInDate === null && selectedCheckOutDate === null) {
-                var currentDate = new Date(day.year, day.month, day.day);
-
-                if (currentDate.getFullYear() === currentYear &&
-                    currentDate.getMonth() === currentMonth &&
-                    currentDate.getDate() === currentDay) {
-                        cell.addClass('active');
-                    }
-                }
-            }
-
-            cell.on('click', function() {
-                if (selectedCheckInDate === null) {
-                    selectedCheckInDate = day;
-                    checkInInput.val(year+'-'+('0' + (currentDate.getMonth()+1)).slice(-2)+'-'+('0' + currentDate.getDate()).slice(-2));
-                } else if (selectedCheckOutDate === null) {
-                    selectedCheckOutDate = day;
-                    //checkOutInput.val(months[month] + ' ' + day.day + ', ' + year);      
-                    checkOutInput.val(year+'-'+('0' + (currentDate.getMonth()+1)).slice(-2)+'-'+('0' + currentDate.getDate()).slice(-2));
-                } else {
-                    selectedCheckInDate = day;
-                    selectedCheckOutDate = null;
-                    checkInInput.val(year+'-'+('0' + (currentDate.getMonth()+1)).slice(-2)+'-'+('0' + currentDate.getDate()).slice(-2));
-                    checkOutInput.val('');
-                }
-                populateCalendar(month, year);
-            });
-            calendarBody.append(cell);
-            });
-        }
-
-        populateCalendar(currentMonth, currentYear);
-        $('.prev-month').on('click', function() {
-            currentMonth--;
-            if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            populateCalendar(currentMonth, currentYear);
-        });
-
-        $('.next-month').on('click', function() {
-            currentMonth++;
-            if (currentMonth > 11){
-                currentMonth = 0;
-                currentYear++;
-            }
-        populateCalendar(currentMonth, currentYear);
-        });
-    });
-
+    //Get database days
+    var mydata = [];
     $.ajax({
         url: '/rooms', 
         type: 'GET',
         dataType: 'json',
         success: function(data) {
-            console.log(data);
+            // Loop through the data and add it to the 2D array
+            for (let i = 0; i < data.length; i++) {
+                let fromDate = new Date(data[i].from_date);
+                let toDate = new Date(data[i].to_date);
+                let fromDay = fromDate.getDate();
+                let fromMonth = fromDate.getMonth()+1;
+                let fromYear = fromDate.getFullYear();
+                let toDay = toDate.getDate();
+                let toMonth = toDate.getMonth()+1;
+                let toYear = toDate.getFullYear();
+
+                let row = [data[i].name, {day: fromDay, month: fromMonth, year: fromYear}, { day: toDay, month: toMonth, year: toYear }];
+                mydata.push(row);
+            }
+
+            // Do something with the 2D array
+            console.log(mydata);
+            createCalendar();
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus + ': ' + errorThrown);
         }
     });
 
+    function createCalendar() {
+        //create responsive calendar
+        $(document).ready(function() {
+            var months = [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December'
+            ];
+
+            var currentDate = new Date();
+            var currentYear = currentDate.getFullYear();
+            var currentMonth = currentDate.getMonth();
+            var currentDay = currentDate.getDate();
+
+            var selectedCheckInDate = null;
+            var selectedCheckOutDate = null;
+
+            var checkInInput = $('#check-in');
+            var checkOutInput = $('#check-out');
+
+            function populateCalendar(month, year) {
+                var monthTitle = document.querySelector('.calendar-title');
+                monthTitle.textContent = months[month];
+
+                var daysInMonth = new Date(year, month + 1, 0).getDate();
+                var firstDay = new Date(year, month, 1).getDay();
+                var lastDay = new Date(year, month, daysInMonth).getDay();
+
+                var days = [];
+
+                for (var i = 1; i <= daysInMonth; i++) {
+                    days.push({
+                        day: i,
+                        month: month,
+                        year: year
+                    });
+                }
+
+                for (var i = 0; i < firstDay; i++) {
+                    days.unshift(null);
+                }
+
+                for (var i = lastDay; i < 6; i++) {
+                    days.push(null);
+                }
+
+                var calendarBody = $('.calendar-body');
+                calendarBody.empty();
+
+                days.forEach(function(day) {
+                    var cell = $('<div class="calendar-cell"></div>');
+
+                    if (day === null) {
+                        cell.addClass('disabled');
+                    } else {
+                        cell.text(day.day);
+
+                        for (var i = 0; i < mydata.length; i++) {
+                            var fromDate = mydata[i][1];
+                            var toDate = mydata[i][2];
+                            var currentDate = new Date(day.year, day.month, day.day);
+                            var fromDateTime = new Date(fromDate.year, fromDate.month-1, fromDate.day);
+                            var toDateTime = new Date(toDate.year, toDate.month-1, toDate.day);
+
+                            if (currentDate >= fromDateTime && currentDate <= toDateTime) {
+                                cell.addClass('disabled');
+                                cell.css('background-color', 'red');
+                                break;
+                            }
+                        }
+                
+
+                    if (selectedCheckInDate !== null && selectedCheckOutDate === null) {
+                        var checkInDate = new Date(selectedCheckInDate.year,selectedCheckInDate.month,selectedCheckInDate.day);
+                        var currentDate = new Date(day.year, day.month, day.day);
+                        
+                        if (currentDate >= checkInDate) {
+                            if (currentDate <= checkInDate) {
+                                cell.css('background-color', 'green');
+                            } else {
+                                cell.addClass('active');
+                            }
+                        } 
+                    } else if (selectedCheckInDate === null && selectedCheckOutDate === null) {
+                        var currentDate = new Date(day.year, day.month, day.day);
+
+                        if (currentDate.getFullYear() === currentYear && currentDate.getMonth() === currentMonth && currentDate.getDate() === currentDay) {
+                            cell.addClass('active');
+                        }
+                    } else if (selectedCheckInDate !== null && selectedCheckOutDate !== null) {
+                        var checkInDate = new Date(selectedCheckInDate.year,selectedCheckInDate.month,selectedCheckInDate.day);
+                        var checkOutDate = new Date(selectedCheckOutDate.year,selectedCheckOutDate.month,selectedCheckOutDate.day)
+                        if (currentDate >= checkInDate) {
+                            if (currentDate <= checkInDate) {
+                                cell.css('background-color', 'green');
+                            } else {
+                                cell.addClass('active');
+                            }
+                        } 
+
+                        if (currentDate >= checkOutDate) {
+                            if (currentDate <= checkOutDate) {
+                                cell.css('background-color', 'green');
+                            } else {
+                                cell.removeClass('active');
+                            }
+                        }
+                    }
+                }
+
+                cell.on('click', function() {
+                    if (selectedCheckInDate === null) {
+                        var datePicked = (year+'-'+('0' + (currentDate.getMonth()+1)).slice(-2)+'-'+('0' + currentDate.getDate()).slice(-2));
+                        selectedCheckInDate = day;
+                        checkInInput.val(datePicked);
+                    } else if (selectedCheckOutDate === null) {
+                        var datePicked = (year+'-'+('0' + (currentDate.getMonth()+1)).slice(-2)+'-'+('0' + currentDate.getDate()).slice(-2));
+                        selectedCheckOutDate = day;   
+                        checkOutInput.val(datePicked);
+                    } else {
+                        var datePicked = (year+'-'+('0' + (day.month+1)).slice(-2)+'-'+('0' + day.day).slice(-2));
+                        selectedCheckInDate = day;
+                        selectedCheckOutDate = null;
+                        checkInInput.val(datePicked);
+                        checkOutInput.val('');
+                    }
+                    populateCalendar(month, year);
+                });
+                calendarBody.append(cell);
+                });
+            }
+
+            populateCalendar(currentMonth, currentYear);
+            $('.prev-month').on('click', function() {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                populateCalendar(currentMonth, currentYear);
+            });
+
+            $('.next-month').on('click', function() {
+                currentMonth++;
+                if (currentMonth > 11){
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                populateCalendar(currentMonth, currentYear);
+            });
+        });
+    }
 </script>
