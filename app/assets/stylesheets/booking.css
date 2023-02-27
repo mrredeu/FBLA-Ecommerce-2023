@@ -155,12 +155,14 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  margin: 3px;
   flex-grow: 1;
   font-size: 16px;
   cursor: pointer;
   border: 1px solid black;
   width: 35px;
   height: 35px;
+  border-radius: 5px;
 }
 
 .calendar-cell:hover {
@@ -176,14 +178,17 @@
 }
 
 .calendar-cell.active {
+  color: #fff;
   background-color: #0071c5;
 }
 
 /*Room reserve button*/
 .reserve {
+  display: block;
   font-size: 30px;
   background-color: #0071c5;
   border-radius: 3px;
   border: rgba(0, 0, 0, 0.8);
   color: white;
+  margin: 0 auto;
 }
