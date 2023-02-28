@@ -42,7 +42,7 @@
                 <h3>Deluxe Room</h3>
                 <p class="base_price">$150</p>
                 <p class="full_price">$170 includes taxes & fees</p>
-                <%= link_to 'Reserve Room', welcome_deluxeBooking_path, class:"redirect-link"%>
+                <%= link_to 'Reserve Room', rooms_new_path(roomType:'Deluxe Room', bPrice:'Price: $150', fPrice:'Full Price: $170'), class:"redirect-link"%>
             </div>
         </div>
         <div class="box" data-price="200">
@@ -53,7 +53,7 @@
                 <h3>Connecting Room</h3>
                 <p class="base_price">$200</p>
                 <p class="full_price">$220 includes taxes & fees</p>
-                <%= link_to 'Reserve Room', welcome_connectedBooking_path, class:"redirect-link"%>
+                <%= link_to 'Reserve Room', rooms_new_path(roomType:'Connecting Room', bPrice:'Price: $200', fPrice:'Full Price: $220'), class:"redirect-link"%>
             </div>
             </div>
         <div class="box" data-price="200">
@@ -64,7 +64,7 @@
                 <h3>Suite</h3>
                 <p class="base_price">$230</p>
                 <p class="full_price">$250 includes taxes & fees</p>
-                <%= link_to 'Reserve Room', welcome_suiteBooking_path, class:"redirect-link"%>
+                <%= link_to 'Reserve Room', rooms_new_path(roomType:'Suite Room', bPrice:'Price: $230', fPrice:'Full Price: $250'), class:"redirect-link"%>
             </div>
         </div>
     </div>  
