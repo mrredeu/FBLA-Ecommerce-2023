@@ -46,13 +46,21 @@
             </div>
         </div>
         <div class="box" data-price="200">
+            <div class="images-container">
+                <%= image_tag('connecting1.jpg', class:"images") %>
+            </div>
+            <div class="text">
                 <h3>Connecting Room</h3>
                 <p class="base_price">$200</p>
                 <p class="full_price">$220 includes taxes & fees</p>
                 <%= link_to 'Reserve Room', rooms_new_path(roomType:'Connecting Room', bPrice:'Price: $200', fPrice:'Full Price: $220'), class:"redirect-link"%>
             </div>
-            </div>
+        </div>
         <div class="box" data-price="200">
+            <div class="images-container">
+                <%= image_tag('suite1.jfif', class:"images") %>
+            </div>
+            <div class="text">
                 <h3>Suite</h3>
                 <p class="base_price">$230</p>
                 <p class="full_price">$250 includes taxes & fees</p>
