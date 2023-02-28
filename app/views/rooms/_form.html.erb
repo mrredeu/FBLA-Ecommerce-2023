@@ -55,44 +55,44 @@
 <% end %>
 
 <script>
-    var prevMonthButton = document.querySelector('.prev-month');
-    var nextMonthButton = document.querySelector('.next-month');
-    prevMonthButton.addEventListener('click', function(event) {event.preventDefault();});
-    nextMonthButton.addEventListener('click', function(event) {event.preventDefault();});
+    $(document).ready(function() {
+        var prevMonthButton = document.querySelector('.prev-month');
+        var nextMonthButton = document.querySelector('.next-month');
+        prevMonthButton.addEventListener('click', function(event) {event.preventDefault();});
+        nextMonthButton.addEventListener('click', function(event) {event.preventDefault();});
 
-    //Get database days
-    var mydata = [];
-    $.ajax({
-        url: '/rooms', 
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            // Loop through the data and add it to the 2D array
-            for (let i = 0; i < data.length; i++) {
-                let fromDate = new Date(data[i].from_date);
-                let toDate = new Date(data[i].to_date);
-                let fromDay = fromDate.getDate();
-                let fromMonth = fromDate.getMonth()+1;
-                let fromYear = fromDate.getFullYear();
-                let toDay = toDate.getDate();
-                let toMonth = toDate.getMonth()+1;
-                let toYear = toDate.getFullYear();
+        //Get database days
+        var mydata = [];
+        $.ajax({
+            url: '/rooms', 
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                // Loop through the data and add it to the 2D array
+                for (let i = 0; i < data.length; i++) {
+                    let fromDate = new Date(data[i].from_date);
+                    let toDate = new Date(data[i].to_date);
+                    let fromDay = fromDate.getDate();
+                    let fromMonth = fromDate.getMonth()+1;
+                    let fromYear = fromDate.getFullYear();
+                    let toDay = toDate.getDate();
+                    let toMonth = toDate.getMonth()+1;
+                    let toYear = toDate.getFullYear();
 
-                let row = [data[i].name, {day: fromDay, month: fromMonth, year: fromYear}, { day: toDay, month: toMonth, year: toYear }];
-                mydata.push(row);
+                    let row = [data[i].name, {day: fromDay, month: fromMonth, year: fromYear}, {day: toDay, month: toMonth, year: toYear}];
+                    mydata.push(row);
+                }
+
+                // Create calendar after data is finished
+                createCalendar();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus + ': ' + errorThrown);
             }
+        });
 
-            // Create calendar after data is finished
-            createCalendar();
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.log(textStatus + ': ' + errorThrown);
-        }
-    });
-
-    function createCalendar() {
-        //create responsive calendar
-        $(document).ready(function() {
+        function createCalendar() {
+            //create responsive calendar
             var months = [
                 'January',
                 'February',
@@ -255,6 +255,6 @@
                 }
                 populateCalendar(currentMonth, currentYear);
             });
-        });
-    }
+        };
+    });
 </script>
