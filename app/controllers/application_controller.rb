@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base 
 end
 # app/controllers/data_controller.rb
-class DataController < ApplicationController
+class RoomsController < ApplicationController
     def index
         @data = MyModel.all # replace MyModel with your model name
         respond_to do |format|

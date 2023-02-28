@@ -31,46 +31,79 @@
       <a class="next" onclick="changeSlide(1)">&#10095;</a>
     </div> 
     <div class="information">
-      <p>430 sq ft</p>
+      <p id='sq-ft'></p>
+      <p id='beds'></p>
+      <p id='sleeps'></p>
+      <p>Free Internet Access</p>
+      <p>Free Parking</p>
+      <p>Pool</p>
       <p id='base_price'></p>
       <p id='full_price'></p>
-      <p>1 King Bed</p>
-      <p>Sleeps 2</p>
-      <p>Free Wifi</p>
     </div>
   </div>
 </body>
+
 <%= render "form", room: @room %>
 <script>
-  var params = ['roomType', 'bPrice', 'fPrice']
-  var ids = ["roomType", "base_price", "full_price"];
-
-  for (var i = 0; i < ids.length; i++) {
-    var element = document.getElementById(ids[i]);
-    
-    // If there is saved text content, set the element's text content to it
-    if (localStorage.getItem(ids[i]) != null) {
-      element.textContent = window.localStorage.getItem(ids[i]);
-    }else{
+  function updatePulledInfo (){
+    var params = ['roomType', 'bPrice', 'fPrice']
+    var ids = ["roomType", "base_price", "full_price"];
+    for (var i = 0; i < ids.length; i++) {
+      var element = document.getElementById(ids[i]);
       var urlParams = new URLSearchParams(window.location.search);
       var getInfo = urlParams.get(params[i]);
-      element.textContent = getInfo;
-      window.localStorage.setItem(ids[i], getInfo);
+      if (getInfo != element.textContent){
+        element.textContent = getInfo;
+        window.localStorage.setItem(ids[i], getInfo);
+      }else if (localStorage.getItem(ids[i]) != null) {
+        element.textContent = window.localStorage.getItem(ids[i]);
+      }else{
+        element.textContent = getInfo;
+        window.localStorage.setItem(ids[i], getInfo);
+      }
     }
   }
-
-  var idFields = ['roomTypeField', 'totalPriceField'];
-  var idText = ['roomType', 'full_price'];
-
-  var field = document.getElementById('roomTypeField');
-  var text = document.getElementById('roomType').textContent;
-  field.value = text;
-
-  var field = document.getElementById('totalPriceField');
-  var text = document.getElementById('full_price').textContent;
-  text = text.slice(-3);
-
-  field.value = text;
+  function updateOtherInfo() {
+    var idFields = ['roomTypeField', 'totalPriceField'];
+    var idText = ['roomType', 'full_price'];
+    var field = document.getElementById('roomTypeField');
+    var text = document.getElementById('roomType').textContent;
+    field.value = text;
+    var field = document.getElementById('totalPriceField');
+    var text = document.getElementById('full_price').textContent;
+    text = text.slice(-3);
+    field.value = text;
+    var roomFields = ['#sq-ft', '#beds', '#sleeps']
+    var roomStandard = ['430 sq ft', '1 King Bed', 'Sleeps 2']
+    var roomDeluxe = ['560 sq ft', '2 Queen Beds', 'Sleeps 4']
+    var roomConnecting = ['650 sq ft', '4 Queen Beds', 'Sleeps 8']
+    var roomSuite = ['780 sq ft', '1 King Beds', 'Sleeps 2']
+    if (localStorage.getItem('roomType') == 'Standard Room') {
+      for (var i = 0; i < 3; i++){
+        p = document.querySelector(roomFields[i]);
+        p.textContent = roomStandard[i]
+      }
+    }else if (localStorage.getItem('roomType') == 'Deluxe Room') {
+      for (var i = 0; i < 3; i++){
+        p = document.querySelector(roomFields[i]);
+        p.textContent = roomDeluxe[i]
+      }
+    }else if (localStorage.getItem('roomType') == 'Connecting Room') {
+      for (var i = 0; i < 3; i++){
+        p = document.querySelector(roomFields[i]);
+        p.textContent = roomConnecting[i]
+      }
+    }else if (localStorage.getItem('roomType') == 'Suite Room') {
+      for (var i = 0; i < 3; i++){
+        p = document.querySelector(roomFields[i]);
+        p.textContent = roomSuite[i]
+      }
+    }
+  }
+  async function runInfo() {
+    await updatePulledInfo();
+    await updateOtherInfo();
+  }
+  runInfo();
 </script>
-
 <%= javascript_include_tag "slider.js" %>
