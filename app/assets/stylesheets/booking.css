@@ -78,8 +78,22 @@
 /*description*/
 .information {
   display: block;
-  font-size: 17px;
+  font-size: 20px;
   margin-left: 5px;
+  width: 100%;
+}
+
+.range-square {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px dashed black;
+  border-radius: 5px;
+}
+
+.svgFile {
+  width: 30px;
+  height: 30px;
 }
 
 /*calendar*/
