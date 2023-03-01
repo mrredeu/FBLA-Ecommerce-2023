@@ -19,8 +19,9 @@
   color: black;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
   .main {
+    display: flex;
     outline: 5px solid black;
     padding: 10px;
     border-radius: 5px;
@@ -30,13 +31,50 @@
   .Title {
     font-size: 50px;
     margin: 0;
-    margin-top: 40px;
     margin-left: 10%;
   }
-
+  
+  .main > div {
+    display: flex;
+    align-items: center;
+    width: 50%;
+  }
+  
   .mainIMG {
     width: 15%;
+    margin-left: 5%;
+    margin-right: 0%;
+  } 
+
+  .navbar {
+    width: 50%;
   }
+
+  .navbar-item {
+    padding: 0 5%;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main {
+    display: flex;
+    outline: 5px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .Title {
+    font-size: 45px;
+    margin: 0;
+    margin-left: 5%;
+  }
+  
+  .mainIMG {
+    width: 20%;
+    margin-right: 10px;
+  } 
 
   .navbar-item {
     padding: 0 20px;
@@ -47,28 +85,13 @@
 @media (max-width: 768px){
   .main {
     display: flex;
-    
   }
 
   .Title {
     font-size: 35px;
-    margin: 0;
-    margin-left: 5%;
   }
-  
-  .main > div {
-    display: flex;
-    align-items: center;
-    width: 50%;
-  }
-  
-  .mainIMG {
-    width: 20%;
-    margin-right: 10px;
-  } 
 
   .navbar-item {
-    padding: 0 20px;
     font-size: 23px;
   }
 }
@@ -76,6 +99,7 @@
 @media (max-width: 425px) {
   .main {
     display:block;
+    outline: 3px solid black;
     padding: 5px;
     border-radius: 3px;
     margin-bottom: 10px;
@@ -93,12 +117,14 @@
 
   .mainIMG {
     width: 20%;
+    margin-right: 0%;
     margin-left: 0%;
   }
 
   .navbar {
     display: block;
     text-align: center;
+    width: 100%;
   }
 
   .navbar-item {
@@ -109,25 +135,12 @@
 
 @media (max-width: 375px) {
   .main {
-    display:block;
-    padding: 5px;
     border-radius: 2px;
-    margin-bottom: 10px;
-  }
-
-  .main > div {
-    display: flex;
-    width: 100%;
   }
   
   .Title {
     font-size: 35px;
     margin: 20px 0px 10px 10px;
-  }
-
-  .mainIMG {
-    width: 20%;
-    margin-left: 0%;
   }
 
   .navbar-item {
@@ -139,24 +152,12 @@
 @media (max-width: 320px) {
   .main {
     display:block;
-    padding: 5px;
     border-radius: 2px;
-    margin-bottom: 10px;
   }
 
-  .main > div {
-    display: flex;
-    width: 100%;
-  }
-  
   .Title {
     font-size: 30px;
     margin: 20px 0px 10px 10px;
-  }
-
-  .mainIMG {
-    width: 20%;
-    margin-left: 0%;
   }
 
   .navbar-item {
