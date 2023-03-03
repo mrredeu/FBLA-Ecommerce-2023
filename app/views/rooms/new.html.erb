@@ -18,12 +18,7 @@
 
   <h1 style="text-align:center;margin:0;" id='roomType'></h1>
   <div class="slideshow-container">
-    <div class="mySlides fade">
-      <%=image_tag('standard1.jpg')%>
-    </div>
-    <div class="mySlides fade">
-      <%=image_tag('standard2.jpg')%>
-    </div>
+    <div class='slides'></div>
       <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
       <a class="next" onclick="changeSlide(1)">&#10095;</a>
     </div> 
@@ -82,6 +77,7 @@
 
 <%= render "form", room: @room %>
 <script>
+  //Get Info of room
   function updatePulledInfo (){
     var params = ['roomType', 'bPrice', 'fPrice']
     var ids = ["roomType", "base_price", "full_price"];
@@ -100,16 +96,21 @@
       }
     }
   }
+
+  //Post info into html
   function updateOtherInfo() {
     var idFields = ['roomTypeField', 'totalPriceField'];
     var idText = ['roomType', 'full_price'];
+
     var field = document.getElementById('roomTypeField');
     var text = document.getElementById('roomType').textContent;
     field.value = text;
+
     var field = document.getElementById('totalPriceField');
     var text = document.getElementById('full_price').textContent;
     text = text.slice(-3);
     field.value = text;
+
     var roomFields = ['#sq-ft', '#beds', '#sleeps']
     var roomStandard = ['430 sq ft', '1 King Bed', 'Sleeps 2']
     var roomDeluxe = ['560 sq ft', '2 Queen Beds', 'Sleeps 4']
@@ -137,10 +138,59 @@
       }
     }
   }
+
+  //Image Slider
+  var carousel = document.querySelector('.slideshow-container');
+  var slidesContainer = carousel.querySelector('.slides');
+  var prevBtn = carousel.querySelector('.prev');
+  var nextBtn = carousel.querySelector('.next');
+
+  var images = ['/assets/standard1-52dd544eb690f9bb6765959cb9b31e98229a00fa06097a4c3a24dbde7f942743.jpg','/assets/standard2-f7e8db5be3eb2e1e7c878cd3d708c759d3624e042b40d122698e653d541029a8.jpg'];
+  var currentSlide = 1;
+
+  // Create slides dynamically
+  images.forEach((imageSrc, index) => {
+    var slide = document.createElement('div');
+    slide.classList.add('mySlides');
+    slide.classList.add('fade');
+    if (index === currentSlide) {
+      slide.classList.add('active');
+      slide.style.display = 'block';
+    }
+    var img = document.createElement('img');
+    img.src = imageSrc;
+    slide.appendChild(img);
+    slidesContainer.appendChild(slide);
+  });
+
+  // Add event listeners to buttons
+  function changeSlide(n) {
+    currentSlide = currentSlide + n;
+    updateSlide();
+  }
+
+  // Update slide based on currentSlide
+  function updateSlide() {
+   var slides = document.getElementsByClassName("mySlides");
+    if (currentSlide > slides.length) {
+      currentSlide = 1;
+    }
+    if (currentSlide < 1) {
+      currentSlide = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].className = slides[i].className.replace(" active", "");
+    }
+    slides[currentSlide - 1].style.display = "block";
+    slides[currentSlide - 1].className += " active";
+  }
+
   async function runInfo() {
     await updatePulledInfo();
     await updateOtherInfo();
   }
   runInfo();
 </script>
-<%= javascript_include_tag "slider.js" %>
