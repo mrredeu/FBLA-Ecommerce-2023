@@ -77,6 +77,9 @@
 
 <%= render "form", room: @room %>
 <script>
+  //variables
+  var currentSlide = 0;
+
   //Get Info of room
   function updatePulledInfo (){
     var params = ['roomType', 'bPrice', 'fPrice']
@@ -119,49 +122,57 @@
     if (localStorage.getItem('roomType') == 'Standard Room') {
       for (var i = 0; i < 3; i++){
         p = document.querySelector(roomFields[i]);
-        p.textContent = roomStandard[i]
+        p.textContent = roomStandard[i];
       }
+      var images = ['/assets/standard1.jpg','/assets/standard2.jpg'];
+      createSlider(images);
     }else if (localStorage.getItem('roomType') == 'Deluxe Room') {
       for (var i = 0; i < 3; i++){
         p = document.querySelector(roomFields[i]);
-        p.textContent = roomDeluxe[i]
+        p.textContent = roomDeluxe[i];
       }
+      var images = ['/assets/deluxe1.jfif','/assets/deluxe2.jfif','/assets/deluxe3.jfif'];
+      createSlider(images);
     }else if (localStorage.getItem('roomType') == 'Connecting Room') {
       for (var i = 0; i < 3; i++){
         p = document.querySelector(roomFields[i]);
-        p.textContent = roomConnecting[i]
+        p.textContent = roomConnecting[i];
       }
+      var images = ['/assets/standard1.jpg','/assets/standard2.jpg'];
+      createSlider(images);
     }else if (localStorage.getItem('roomType') == 'Suite Room') {
       for (var i = 0; i < 3; i++){
         p = document.querySelector(roomFields[i]);
-        p.textContent = roomSuite[i]
+        p.textContent = roomSuite[i];
       }
+      var images = ['/assets/standard1.jpg','/assets/standard2.jpg'];
+      createSlider(images);
     }
   }
 
   //Image Slider
-  var carousel = document.querySelector('.slideshow-container');
-  var slidesContainer = carousel.querySelector('.slides');
-  var prevBtn = carousel.querySelector('.prev');
-  var nextBtn = carousel.querySelector('.next');
+  function createSlider(images){
+    var carousel = document.querySelector('.slideshow-container');
+    var slidesContainer = carousel.querySelector('.slides');
+    var prevBtn = carousel.querySelector('.prev');
+    var nextBtn = carousel.querySelector('.next');
 
-  var images = ['/assets/standard1-52dd544eb690f9bb6765959cb9b31e98229a00fa06097a4c3a24dbde7f942743.jpg','/assets/standard2-f7e8db5be3eb2e1e7c878cd3d708c759d3624e042b40d122698e653d541029a8.jpg'];
-  var currentSlide = 1;
-
-  // Create slides dynamically
-  images.forEach((imageSrc, index) => {
-    var slide = document.createElement('div');
-    slide.classList.add('mySlides');
-    slide.classList.add('fade');
-    if (index === currentSlide) {
-      slide.classList.add('active');
-      slide.style.display = 'block';
-    }
-    var img = document.createElement('img');
-    img.src = imageSrc;
-    slide.appendChild(img);
-    slidesContainer.appendChild(slide);
-  });
+    // Create slides dynamically
+    images.forEach((imageSrc, index) => {
+      var slide = document.createElement('div');
+      slide.classList.add('mySlides');
+      slide.classList.add('fade');
+      if (index === currentSlide) {
+        slide.classList.add('active');
+        slide.style.display = 'block';
+      }
+      var img = document.createElement('img');
+      img.src = imageSrc;
+      slide.appendChild(img);
+      slidesContainer.appendChild(slide);
+    });
+    currentSlide += 1;
+  }
 
   // Add event listeners to buttons
   function changeSlide(n) {
@@ -171,7 +182,7 @@
 
   // Update slide based on currentSlide
   function updateSlide() {
-   var slides = document.getElementsByClassName("mySlides");
+    var slides = document.getElementsByClassName("mySlides");
     if (currentSlide > slides.length) {
       currentSlide = 1;
     }
