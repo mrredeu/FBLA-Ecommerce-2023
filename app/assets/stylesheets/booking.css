@@ -150,7 +150,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 375px){
+@media (max-width: 425px){
   /*image slider*/
   .slideshow-container {
     width: 100%;
@@ -174,7 +174,7 @@
   /*description*/
   .information {
     display: block;
-    font-size: 20px;
+    font-size: 25px;
     margin-left: 5px;
     width: 100%;
   }
@@ -188,19 +188,18 @@
   }
 
   .range-square {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 5px;
   }
 
   .svgFile {
     height: 40px;
-    width: 30px;
-
+    width: 40px;
   }
 
   .getName {
-    font-size: 20px;
+    font-size: 6vw;
     margin: 3%;
   }
 
@@ -223,9 +222,9 @@
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    width: 200px;
+    width: 300px;
     text-align: center;
-    font-size: 16px;
+    font-size: 25px;
   }
 
   .calendar {
@@ -233,12 +232,12 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
-    max-width: 350px;
+    max-width: 400px;
   }
 
   .calendar-header {
     padding: 10px;
-    font-size: 20px;
+    font-size: 25px;
   }
 
   .calendar-title {
@@ -247,25 +246,72 @@
 
   .prev-month,
   .next-month {
-    font-size: 24px;
+    font-size: 30px;
   }
 
   .calendar-cell {
     padding: 10px;
     margin: 3px;
-    font-size: 20px;
+    font-size: 23px;
     border: 1px solid black;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 5px;
   }
 
   /*Room reserve button*/
   .reserve {
-    font-size: 30px;
+    font-size: 40px;
     border-radius: 3px;
     margin: 0 auto;
     width: 90%;
+  }
+}
+
+@media (max-width: 375px){
+  /*description*/
+  .information {
+    font-size: 20px;
+  }
+
+  .range-square {
+    width: 30px;
+    height: 30px;
+  }
+
+  .svgFile {
+    height: 40px;
+    width: 30px;
+  }
+
+  /*calendar*/
+  .date-input {
+    width: 200px;
+    font-size: 16px;
+  }
+
+  .calendar {
+    max-width: 350px;
+  }
+
+  .calendar-header {
+    font-size: 20px;
+  }
+
+  .prev-month,
+  .next-month {
+    font-size: 24px;
+  }
+
+  .calendar-cell {
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /*Room reserve button*/
+  .reserve {
+    font-size: 30px;
   }
 }
 
