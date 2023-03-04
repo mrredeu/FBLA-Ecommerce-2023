@@ -1,5 +1,5 @@
 .background {
-  background-color: white;
+  background-color: lightgrey;
 }
 
 .price-range-feature {
@@ -64,6 +64,22 @@
 .images-container {
   width: 50%;
   height: 100%;
+  display: flex;
+  overflow: hidden;
+  background-size: cover;
+}
+
+.Location {
+  overflow: hidden;
+  padding-top: 80%;
+  position: relative;
+}
+
+.Location iframe {
+  border: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
   border-radius: 5px;
 }
 
@@ -128,8 +144,22 @@
     font-size: 35px;
   }
 
+  .full_price {
+    font-size: 25px;
+  }
+
+  .redirect-link {
+    font-size: 40px;
+  }
+
   .titleLoc {
     font-size: 40px;
+  }
+
+  .Location iframe {
+    height: 95%;
+    width: 95%;
+    margin: 0 2.5% 0 2.5%;
   }
 }
 
@@ -203,12 +233,41 @@
 
   .box {
     width: 100%;
+    height: 120px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+
+  .text h3 {
+    font-size: 23px;
+  }
+
+  .base_price {
+    margin: 0% 0% 7% 3%;
+    font-size: 20px;
+  }
+
+  .full_price {
+    font-size: 15px;
+  }
+
+  .redirect-link {
     font-size: 25px;
   }
 
   .Location iframe {
     height: 100%;
     width: 100%;
+    margin: 0%;
+  }
+
+  .contact-info {
+    border: 2px solid black;
+    border-radius: 3px;
+  }
+  
+  .contact-info h2{
+    text-align: center;
   }
 }
 
@@ -222,6 +281,19 @@
   }
 
   .text h3 {
+    font-size: 20px;
+  }
+
+  .base_price {
+    margin: 0% 0% 5% 3%;
+    font-size: 20px;
+  }
+
+  .full_price {
+    font-size: 15px;
+  }
+
+  .redirect-link {
     font-size: 22px;
   }
 

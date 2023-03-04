@@ -18,26 +18,27 @@
   <div class="confirmation-container">
     <h1>Confirmation Order Page</h1>
     <table>
-        <tr>
-            <th>Check-in Date:</th>
-            <td><%= @room.from_date %></td>
-        </tr>
-        <tr>
-            <th>Check-out Date:</th>
-            <td><%= @room.to_date %></td>
-        </tr>
-        <tr>
-            <th>Room Type:</th>
-            <td><%= @room.rType %></td>
-        </tr>
-        <tr>
-            <th>Total Cost:</th>
-            <td>$<%= @room.price %></td>
-        </tr>
-        <tr>
-            <th>Additional Services:</th>
-            <td>Breakfast, Room Service, Pool</td>
-        </tr>
+      <tr>
+          <th>Room Type:</th>
+          <td><%= @room.name %></td>
+      </tr>
+      <tr>
+          <th>Check-in Date:</th>
+          <td><%= @room.from_date %></td>
+      </tr>
+      <tr>
+          <th>Check-out Date:</th>
+          <td><%= @room.to_date %></td>
+      </tr>
+      
+      <tr>
+          <th>Total Cost:</th>
+          <td>$<%= @room.price %></td>
+      </tr>
+      <tr>
+          <th>Additional Services:</th>
+          <td>Breakfast, Room Service, Pool</td>
+      </tr>
     </table>
     <p>Thank you for choosing our hotel. We look forward to seeing you soon!</p>
     <a href="#" onclick="window.print()">Print Confirmation Page</a>
