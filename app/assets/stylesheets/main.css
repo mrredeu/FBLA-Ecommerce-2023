@@ -52,6 +52,15 @@
   width: max-content;
 }
 
+.titleLoc {
+  text-align: center;
+}
+
+.images-container > .images {
+  width: 100%;
+  border-radius: 2px;
+}
+
 .images-container {
   width: 50%;
   height: 100%;
@@ -74,25 +83,64 @@
   border-radius: 5px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 2560px) {
   .price-range-feature {
-    font-size: 30px;
+    font-size: 25px;
     justify-content: right;
+    margin-right: 3%;
   }
 
   .box {
-    width: 48%;
-    height: 220px;
+    width: 49.2%;
+    height: 350px;
     margin: 10px;
-    border-radius: 7px;
+    border-radius: 5px;
   }
 
   .text h3 {
-    font-size: 35px;
+    font-size: 45px;
   }
 
   .base_price {
-    margin: 0% 0% 5% 3%;
+    margin: 0% 0% 15% 3%;
+    font-size: 40px;
+  }
+
+  .full_price {
+    font-size: 35px;
+  }
+
+  .redirect-link {
+    font-size: 50px;
+  }
+
+  .titleLoc {
+    font-size: 40px;
+  }
+
+  .Location iframe {
+    height: 95%;
+    width: 95%;
+    margin: 0 2.5% 0 2.5%;
+  }
+}
+
+@media (max-width: 1440px) {
+  .price-range-feature {
+    margin-right: 2%;
+  }
+
+  .box {
+    width: 48.5%;
+    height: 250px;
+  }
+
+  .text h3 {
+    font-size: 40px;
+  }
+
+  .base_price {
+    margin: 0% 0% 15% 3%;
     font-size: 35px;
   }
 
@@ -104,9 +152,8 @@
     font-size: 40px;
   }
 
-  .images-container > .images {
-    width: 100%;
-    border-radius: 2px;
+  .titleLoc {
+    font-size: 40px;
   }
 
   .Location iframe {
@@ -116,10 +163,72 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .price-range-feature {
+    font-size: 20px;
+    margin-right: 15px;
+  }
+
+  .box {
+    width: 48%;
+    height: 200px;
+  }
+
+  .text h3 {
+    font-size: 30px;
+  }
+
+  .base_price {
+    margin: 0% 0% 20% 3%;
+    font-size: 27px;
+  }
+
+  .full_price {
+    font-size: 20px;
+  }
+
+  .redirect-link {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .price-range-feature {
+    font-size: 20px;
+    justify-content: right;
+  }
+
+  .box {
+    width: 47%;
+    height: 150px;
+  }
+
+  .text h3 {
+    font-size: 22px;
+  }
+
+  .base_price {
+    font-size: 22px;
+  }
+
+  .full_price {
+    font-size: 15px;
+  }
+
+  .redirect-link {
+    font-size: 25px;
+  }
+
+  .titleLoc {
+    font-size: 30px;
+  }
+}
+
 @media (max-width: 425px) {
   .price-range-feature {
     font-size: 20px;
     justify-content: center;
+    margin: 0;
   }
 
   .box {
@@ -146,11 +255,6 @@
     font-size: 25px;
   }
 
-  .images-container > .images {
-    width: 100%;
-    border-radius: 2px;
-  }
-
   .Location iframe {
     height: 100%;
     width: 100%;
@@ -170,14 +274,10 @@
 @media (max-width: 375px) {
   .price-range-feature {
     font-size: 15px;
-    justify-content: center;
   }
 
   .box {
-    width: 100%;
     height: 110px;
-    margin: 10px;
-    border-radius: 5px;
   }
 
   .text h3 {
@@ -197,44 +297,18 @@
     font-size: 22px;
   }
 
-  .images-container > .images {
-    width: 100%;
-    border-radius: 2px;
-  }
-
-  .Location iframe {
-    height: 100%;
-    width: 100%;
-    margin: 0%;
+  .titleLoc {
+    font-size: 25px;
   }
 }
 
 @media (max-width: 320px) {
-  .main {
-    padding: 5px;
-    border-radius: 2px;
-    margin-bottom: 10px;
-  }
-
-  .Title {
-    font-size: 30px;
-    margin: 20px 0px 10px 10px;
-  }
-
-  .mainIMG {
-    width: 20%;
-    margin-left: 0%;
-  }
-
   .price-range-feature {
     font-size: 15px;
-    justify-content: center;
   }
 
   .box {
-    width: 100%;
     height: 100px;
-    margin: 10px;
     border-radius: 3px;
   }
 
@@ -253,16 +327,5 @@
 
   .redirect-link {
     font-size: 18px;
-  }
-
-  .images-container > .images {
-    width: 100%;
-    border-radius: 2px;
-  }
-
-  .Location iframe {
-    height: 100%;
-    width: 100%;
-    margin: 0%;
   }
 }
