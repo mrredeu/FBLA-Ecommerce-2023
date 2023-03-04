@@ -28,7 +28,7 @@
   }
 
   .Title {
-    font-size: 60px;
+    font-size: 2.5vw;
     margin: 0;
     margin-left: 10%;
   }
@@ -83,7 +83,7 @@
   }
 
   .Title {
-    font-size: 45px;
+    font-size: 3vw;
     margin: 0;
     margin-left: 5%;
   }
@@ -105,7 +105,7 @@
   }
 
   .Title {
-    font-size: 35px;
+    font-size: 4vw;
   }
 
   .navbar-item {
@@ -113,7 +113,7 @@
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 600px) {
   .main {
     display:block;
     outline: 3px solid black;
@@ -156,7 +156,7 @@
   }
   
   .Title {
-    font-size: 35px;
+    font-size: 30px;
     margin: 20px 0px 10px 10px;
   }
 

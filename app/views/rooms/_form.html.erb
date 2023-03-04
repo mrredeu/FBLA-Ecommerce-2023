@@ -21,17 +21,17 @@
      </div>
 
      <div class='getName'>
-        <%= form.label :firstName%>
+        <%= form.label :firstName, value:'First Name:' %>
         <%= form.text_field :firstName, pattern:"[A-Z][a-z]+", required: true %>
      </div>
 
      <div class='getName'>
-        <%= form.label :lastName%>
+        <%= form.label :lastName, value:'Last Name:' %>
         <%= form.text_field :lastName, pattern:"[A-Z][a-z]+", required: true %>
      </div>
 
      <div class='getName'>
-        <%= form.label :userEmail%>
+        <%= form.label :userEmail, value:'Email:' %>
         <%= form.text_field :userEmail, type:'email', name:"user_email", required: true %>
      </div>
 
