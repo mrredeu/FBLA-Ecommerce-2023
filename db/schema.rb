@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_04_180701) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_04_183625) do
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_180701) do
     t.datetime "updated_at", null: false
     t.string "firstName"
     t.string "lastName"
+    t.string "userEmail"
   end
 
 end

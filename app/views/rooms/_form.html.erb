@@ -21,16 +21,18 @@
      </div>
 
      <div class='getName'>
-        <%= form.label :firstName, value: "First Name:"%>
-        <%= form.text_field :firstName, required: true, type: "text", name:"first_name", pattern:"[A-Z][a-z]+" %>
+        <%= form.label :firstName%>
+        <%= form.text_field :firstName, pattern:"[A-Z][a-z]+", required: true %>
      </div>
+
      <div class='getName'>
-        <%= form.label :lastName, value: "Last Name:"%>
-        <%= form.text_field :lastName, required: true, type: "text", name:"last_name", pattern:"[A-Z][a-z]+"%>
+        <%= form.label :lastName%>
+        <%= form.text_field :lastName, pattern:"[A-Z][a-z]+", required: true %>
      </div>
+
      <div class='getName'>
-        <%= form.label :email, value: "Email:"%>
-        <%= form.text_field :email, required: true, type:'email', name:"user_email"%>
+        <%= form.label :userEmail%>
+        <%= form.text_field :userEmail, type:'email', name:"user_email", required: true %>
      </div>
 
     <div class="calendar" style="border: 3px solid black;">
@@ -103,7 +105,7 @@
                 console.log(textStatus + ': ' + errorThrown);
             }
         });
-
+        
         function createCalendar() {
             //create responsive calendar
             var months = [
@@ -182,7 +184,7 @@
                                 break;
                             } 
                         }
-                
+
                         if (currentDate < (new Date())){
                             if (cell.css('background-color') !== 'yellow'){
                                 cell.addClass('disabled');

@@ -1,5 +1,18 @@
 <div id="<%= dom_id room %>">
   <p>
+    <strong>First Name:</strong>
+    <%= room.firstName %>
+  </p>
+  <p>
+    <strong>Last Name:</strong>
+    <%= room.lastName %>
+  </p>
+  <p>
+    <strong>Email:</strong>
+    <%= room.userEmail %>
+  </p>
+
+  <p>
     <strong>Room Type:</strong>
     <%= room.name %>
   </p>
@@ -18,5 +31,4 @@
     <strong>Check-Out</strong>
     <%= room.to_date %>
   </p>
-
 </div>

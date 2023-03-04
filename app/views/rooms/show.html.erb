@@ -15,9 +15,22 @@
       <%= link_to 'About Us', welcome_aboutUs_path, class:"navbar-item"%>
     </nav>
   </div>
+
   <div class="confirmation-container">
-    <h1>Confirmation Order Page</h1>
+    <h2>Confirmation Order Page</h2>
     <table>
+      <tr>
+          <th>First Name:</th>
+          <td><%= @room.firstName %></td>
+      </tr>
+      <tr>
+          <th>Last Name:</th>
+          <td><%= @room.lastName %></td>
+      </tr>
+      <tr>
+          <th>Email:</th>
+          <td><%= @room.userEmail %></td>
+      </tr>
       <tr>
           <th>Room Type:</th>
           <td><%= @room.name %></td>
@@ -44,7 +57,7 @@
     <a href="#" onclick="window.print()">Print Confirmation Page</a>
   </div>
   <div>
-    <%= link_to "Change Check-In or Check-Out", edit_room_path(@room) %> |
+    <%= link_to "Change Check-In or Check-Out", edit_room_path(@room) %>
     <%= button_to "Cancel this room", @room, method: :delete %>
   </div>
 </body>
