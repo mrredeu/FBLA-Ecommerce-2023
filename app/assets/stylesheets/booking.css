@@ -91,6 +91,18 @@
 
 }
 
+.getName {
+  display: flex;
+  font-size: 20px;
+  margin: 3%;
+  justify-content: left;
+}
+
+.getName input {
+  margin-left: 5%;
+  border-radius: 5px;
+}
+
 /*calendar*/
 .calendar-container {
   flex-direction: column;

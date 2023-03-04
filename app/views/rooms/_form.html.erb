@@ -20,6 +20,19 @@
         <%= form.text_field :price, style: "display: none", id:'totalPriceField' %>
      </div>
 
+     <div class='getName'>
+        <%= form.label :firstName, value: "First Name:"%>
+        <%= form.text_field :firstName, required: true, type: "text", name:"first_name", pattern:"[A-Z][a-z]+" %>
+     </div>
+     <div class='getName'>
+        <%= form.label :lastName, value: "Last Name:"%>
+        <%= form.text_field :lastName, required: true, type: "text", name:"last_name", pattern:"[A-Z][a-z]+"%>
+     </div>
+     <div class='getName'>
+        <%= form.label :email, value: "Email:"%>
+        <%= form.text_field :email, required: true, type:'email', name:"user_email"%>
+     </div>
+
     <div class="calendar" style="border: 3px solid black;">
         <div class="calendar-container">
             <div class="calendar-input">
