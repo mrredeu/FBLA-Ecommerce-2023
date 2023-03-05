@@ -3,7 +3,7 @@ end
 # app/controllers/data_controller.rb
 class RoomsController < ApplicationController
     def index
-        @data = rooms.all
+        @data = rooms_url.all
         respond_to do |format|
             format.json { render json: @data }
         end
