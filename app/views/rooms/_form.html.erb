@@ -97,7 +97,6 @@
                     let toYear = toDate.getFullYear();
 
                     let row = [data[i].name, {day: fromDay, month: fromMonth, year: fromYear}, {day: toDay, month: toMonth, year: toYear}];
-                    console.log(row);
                     mydata.push(row);
                 }
 
@@ -173,6 +172,7 @@
                         cell.addClass('disabled');
                     } else {
                         cell.text(day.day);
+                        var count = 0;
 
                         for (var i = 0; i < mydata.length; i++) {
                             var fromDate = mydata[i][1];
@@ -182,11 +182,26 @@
                             var toDateTime = new Date(toDate.year, toDate.month-1, toDate.day);
                             var urlParams = new URLSearchParams(window.location.search);
                             var getRoomtype = urlParams.get("roomType");
+                            var roomAmount = 0;
+
+                            if (getRoomtype == 'Standard Room'){
+                                roomAmount = 20;
+                            }else if (getRoomtype == 'Deluxe Room'){
+                                roomAmount = 10;
+                            }else if (getRoomtype == 'Connecting Room'){
+                                roomAmount = 10;
+                            }else if (getRoomtype == 'Suite Room'){
+                                roomAmount = 5;
+                            }
 
                             if ((currentDate >= fromDateTime) && (currentDate <= toDateTime) && (getRoomtype == mydata[i][0])) {
-                                cell.addClass('disabled');
-                                cell.css('background-color', 'yellow');
-                                break;
+                                // Increase count if the room is booked on this day
+                                count += 1;
+                                if (count >= roomAmount) {
+                                    cell.addClass('disabled');
+                                    cell.css('background-color', 'yellow');
+                                    break;
+                                }
                             } 
                         }
 
