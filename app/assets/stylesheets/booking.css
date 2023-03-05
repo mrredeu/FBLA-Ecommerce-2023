@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+#roomType {
+  margin: 0;
+}
+
 /*image slider*/
 .slideshow-container {
   position: relative;
@@ -150,7 +154,274 @@
   margin: 0 auto;
 }
 
+@media (max-width: 2560px){
+  #roomType {
+    text-align: center;
+    font-size: 5vw;
+  }
+
+  /*image slider*/
+  .slideshow-container {
+    width: 100%;
+  }
+
+  .prev,
+  .next {
+    top: 50%;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+
+  .next {
+    right: 0;
+    border-radius: 5px;
+  }
+
+  /*description*/
+  .information {
+    display: block;
+    font-size: 3vw;
+    margin-left: 5px;
+    width: 100%;
+  }
+
+  .information table {
+    width: 100%;
+  }
+
+  .information td {
+    vertical-align: middle;
+  }
+
+  .range-square {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+  }
+
+  .svgFile {
+    height: 100px;
+    width: 100px;
+  }
+
+  .getName {
+    font-size: 3vw;
+    margin: 3%;
+  }
+
+  .getName input {
+    margin-left: 5%;
+    border-radius: 5px;
+    font-size: 3vw;
+  }
+
+  /*calendar*/
+  .calendar-container {
+    width: 100%;
+  }
+
+  .calendar-input {
+    margin: 10px;
+    font-size: 100px;
+  }
+
+  .date-input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 1800px;
+    text-align: center;
+    font-size: 100px;
+  }
+
+  .calendar {
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 2000px;
+  }
+
+  .calendar-header {
+    padding: 10px;
+    font-size: 50px;
+  }
+
+  .calendar-title {
+    margin: 0;
+  }
+
+  .prev-month,
+  .next-month {
+    font-size: 50px;
+  }
+
+  .calendar-cell {
+    padding: 20px;
+    margin: 3px;
+    font-size: 30px;
+    border: 1px solid black;
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+  }
+
+  /*Room reserve button*/
+  .reserve {
+    font-size: 4vw;
+    border-radius: 3px;
+    margin: 0 auto;
+    width: 50%;
+  }
+}
+
+
+@media (max-width: 1440px){
+  #roomType {
+    text-align: center;
+    font-size: 5vw;
+  }
+
+  /*image slider*/
+  .slideshow-container {
+    width: 100%;
+  }
+
+  .prev,
+  .next {
+    top: 50%;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+
+  .next {
+    right: 0;
+    border-radius: 5px;
+  }
+
+  /*description*/
+  .information {
+    display: block;
+    font-size: 3vw;
+    margin-left: 5px;
+    width: 100%;
+  }
+
+  .information table {
+    width: 100%;
+  }
+
+  .information td {
+    vertical-align: middle;
+  }
+
+  .range-square {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+  }
+
+  .svgFile {
+    height: 40px;
+    width: 40px;
+  }
+
+  .getName {
+    font-size: 3vw;
+    margin: 3%;
+  }
+
+  .getName input {
+    margin-left: 5%;
+    border-radius: 5px;
+    font-size: 3vw;
+  }
+
+  /*calendar*/
+  .calendar-container {
+    width: 100%;
+  }
+
+  .calendar-input {
+    margin: 10px;
+    font-size: 20px;
+  }
+
+  .date-input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 300px;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .calendar {
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 800px;
+  }
+
+  .calendar-header {
+    padding: 10px;
+    font-size: 25px;
+  }
+
+  .calendar-title {
+    margin: 0;
+  }
+
+  .prev-month,
+  .next-month {
+    font-size: 30px;
+  }
+
+  .calendar-cell {
+    padding: 10px;
+    margin: 3px;
+    font-size: 30px;
+    border: 1px solid black;
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+  }
+
+  /*Room reserve button*/
+  .reserve {
+    font-size: 40px;
+    border-radius: 3px;
+    margin: 0 auto;
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px){
+  /*calendar*/
+  .calendar {
+    max-width: 600px;
+  }
+
+  .calendar-cell {
+    font-size: 25px;
+    width: 55px;
+    height: 55px;
+  }
+}
+
 @media (max-width: 425px){
+  #roomType {
+    text-align: center;
+    font-size: 8vw;
+  }
+
   /*image slider*/
   .slideshow-container {
     width: 100%;
@@ -174,7 +445,7 @@
   /*description*/
   .information {
     display: block;
-    font-size: 25px;
+    font-size: 5vw;
     margin-left: 5px;
     width: 100%;
   }
