@@ -37,11 +37,11 @@
       </tr>
       <tr>
           <th>Check-in Date:</th>
-          <td><%= @room.from_date %></td>
+          <td><%= @room.from_date.strftime('%m-%d-%Y 4:00 PM') %></td>
       </tr>
       <tr>
           <th>Check-out Date:</th>
-          <td><%= @room.to_date %></td>
+          <td><%= @room.to_date.strftime('%m-%d-%Y 11:00 AM') %></td>
       </tr>
       
       <tr>
@@ -55,9 +55,11 @@
     </table>
     <p>Thank you for choosing our hotel. We look forward to seeing you soon!</p>
   </div>
-  <div>
-    <a href="#" onclick="window.print()">Print Confirmation Page</a>
-    <%= link_to "Change Check-In or Check-Out", edit_room_path(@room) %>
-    <%= link_to "Cancel this room", @room, method: :delete %>
+  <div >
+    <a href="#" onclick="window.print()" class='extraConfirm'>Print Confirmation Page</a>
+    <br>
+    <%= link_to "Change Check-In or Check-Out", edit_room_path(@room), class:'extraConfirm'%>
+    <br>
+    <%= link_to "Cancel this room", @room, class:'extraConfirm', method: :delete %>
   </div>
 </body>
