@@ -54,10 +54,10 @@
       </tr>
     </table>
     <p>Thank you for choosing our hotel. We look forward to seeing you soon!</p>
-    <a href="#" onclick="window.print()">Print Confirmation Page</a>
   </div>
   <div>
+    <a href="#" onclick="window.print()">Print Confirmation Page</a>
     <%= link_to "Change Check-In or Check-Out", edit_room_path(@room) %>
-    <%= button_to "Cancel this room", @room, method: :delete %>
+    <%= link_to "Cancel this room", @room, method: :delete %>
   </div>
 </body>

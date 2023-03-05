@@ -1,0 +1,52 @@
+.backgroundInfo {
+    text-align:center;
+}
+
+.contact-info {
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.contact-info h2{
+    text-align: center;
+}
+
+
+@media  (max-width: 2560px){
+    .backgroundInfo {
+        font-size:3vw;
+    }
+
+    .contact-info {
+        font-size: 3vw;
+    }
+
+    .contact-info ul{
+        margin: 5%;
+    }
+}
+
+
+@media  (max-width: 768px){
+    .backgroundInfo {
+        font-size:4vw;
+    }
+
+    .contact-info {
+        font-size: 4vw;
+    }
+
+    .contact-info ul{
+        margin: 0%;
+    }
+}
+
+@media  (max-width: 425px){
+    .backgroundInfo {
+        font-size:5vw;
+    }
+
+    .contact-info {
+        font-size: 5vw;
+    }
+}

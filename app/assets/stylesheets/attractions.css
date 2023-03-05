@@ -1,0 +1,39 @@
+.attractions h1 {
+    text-align:center;
+    margin:0;
+}
+
+.attractions h2{
+    text-align:center;
+    margin-bottom:0;
+}
+@media (max-width: 2560px){
+    .attractions h1{
+        font-size: 5vw;
+    }
+
+    .attractions h2 {
+        font-size: 4vw;
+    }
+}
+
+
+@media (max-width: 1024px){
+    .attractions h1{
+        font-size: 7vw;
+    }
+
+    .attractions h2 {
+        font-size: 6vw;
+    }
+}
+
+@media (max-width: 425px){
+    .attractions h1{
+        font-size: 8vw;
+    }
+
+    .attractions h2 {
+        font-size: 7vw;
+    }
+}
