@@ -67,6 +67,8 @@
       </table>
       <p id='base_price'></p>
       <p id='full_price'></p>
+      <p id='link1'></p>
+      <p id='link2'></p>
     </div>
   </div>
 </body>
@@ -129,21 +131,21 @@
         p = document.querySelector(roomFields[i]);
         p.textContent = roomDeluxe[i];
       }
-      var images = ['/assets/deluxe1.jfif','/assets/deluxe2.jfif','/assets/deluxe3.jfif'];
+      var images = ['/assets/deluxe1.jpg','/assets/deluxe2.jpg'];
       createSlider(images);
     }else if (localStorage.getItem('roomType') == 'Connecting Room') {
       for (var i = 0; i < 3; i++){
         p = document.querySelector(roomFields[i]);
         p.textContent = roomConnecting[i];
       }
-      var images = ['/assets/standard1.jpg','/assets/standard2.jpg'];
+      var images = ['/assets/connecting1.jpg','/assets/connecting2.jpg'];
       createSlider(images);
     }else if (localStorage.getItem('roomType') == 'Suite Room') {
       for (var i = 0; i < 3; i++){
         p = document.querySelector(roomFields[i]);
         p.textContent = roomSuite[i];
       }
-      var images = ['/assets/standard1.jpg','/assets/standard2.jpg'];
+      var images = ['/assets/suite1.jpg','/assets/suite2.jpg'];
       createSlider(images);
     }
   }
