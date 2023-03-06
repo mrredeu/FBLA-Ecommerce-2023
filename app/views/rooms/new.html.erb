@@ -108,6 +108,7 @@
 
     var field = document.getElementById('totalPriceField');
     var text = document.getElementById('full_price').textContent;
+    text = text.replace('/night', '');
     text = text.slice(-3);
     field.value = text;
 

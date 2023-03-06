@@ -43,10 +43,9 @@
           <th>Check-out Date:</th>
           <td><%= @room.to_date.strftime('%m-%d-%Y 11:00 AM') %></td>
       </tr>
-      
       <tr>
           <th>Total Cost:</th>
-          <td>$<%= @room.price %></td>
+          <td id='totalPrice'></td>
       </tr>
       <tr>
           <th>Additional Services:</th>
@@ -63,3 +62,37 @@
     <%= link_to "Cancel this room", @room, class:'extraConfirm', method: :delete %>
   </div>
 </body>
+
+<script>
+
+//Get database days
+  var startDate;
+  var endDate;
+
+  $.ajax({
+      url: '/rooms', 
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        var latestRoom = data.length-1;
+        // Loop through the data and add it to the 2D array
+        let fromDate = new Date(data[latestRoom].from_date);
+        let toDate = new Date(data[latestRoom].to_date);
+        let fromDay = fromDate.getDate();
+        let fromMonth = fromDate.getMonth()+1;
+        let fromYear = fromDate.getFullYear();
+        let toDay = toDate.getDate();
+        let toMonth = toDate.getMonth()+1;
+        let cost = data[latestRoom].price;
+
+        // Create calendar after data is finished
+        var totalDays = Math.ceil(Math.abs(toDate.getTime() - fromDate.getTime()) / (1000 * 3600 * 24));
+        var totalPrice = cost*totalDays;
+        var field = $('#totalPrice');
+        field.text('$'+totalPrice);
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+          console.log(textStatus + ': ' + errorThrown);
+      }
+  });
+</script>
