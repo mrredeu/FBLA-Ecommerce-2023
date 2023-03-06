@@ -1,18 +1,14 @@
 <body class="background">
   <div class="main">
-    <div style="width: 100%; display:flex;">
-      <div style="max-width: 20%;">
-          <%= image_tag('logo.png', style:"width:100%") %>
-      </div>
-      <div style="width: 80%;">
-          <h1 class="Title">Moonlight Hotel</h1>
-      </div>
+    <div>
+        <%= image_tag('logo.png', class:"mainIMG") %>
+        <h1 class="Title">Moonlight Hotel</h1>
     </div>
-    
+
     <nav class="navbar">
-      <%= link_to 'Rooms', welcome_main_path, class:"navbar-item"%>
-      <%= link_to 'Attrations', welcome_attractions_path, class:"navbar-item"%>
-      <%= link_to 'About Us', welcome_aboutUs_path, class:"navbar-item"%>
+        <%= link_to 'Rooms', welcome_main_path, class:"navbar-item"%>
+        <%= link_to 'Attrations', welcome_attractions_path, class:"navbar-item"%>
+        <%= link_to 'About Us', welcome_aboutUs_path, class:"navbar-item"%>
     </nav>
   </div>
 
