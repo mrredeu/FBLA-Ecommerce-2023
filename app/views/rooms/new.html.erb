@@ -103,6 +103,7 @@
   function updateOtherInfo() {
     var idFields = ['roomTypeField', 'totalPriceField'];
     var idText = ['roomType', 'full_price'];
+    var citedSourcesDiv = $('#cited-Sources');
 
     var field = document.getElementById('roomTypeField');
     var text = document.getElementById('roomType').textContent;
@@ -124,6 +125,9 @@
         p = document.querySelector(roomFields[i]);
         p.textContent = roomStandard[i];
       }
+      citedSourcesDiv.append("<p><a href='https://www.flickr.com/photos/gothiatowers/15742160128/in/photostream/'>Standard Room</a>, by <a href='https://www.flickr.com/photos/gothiatowers/'>Gothia Towers</a> licensed under <a href='https://creativecommons.org/licenses/by/2.0'>CC BY 2.0</a></p>");
+      citedSourcesDiv.append("<p><a href='https://www.flickr.com/photos/gothiatowers/15928945442/in/photostream/'>Standardrum Badrum 9-13</a>, by <a href='https://www.flickr.com/photos/gothiatowers/'>Gothia Towers</a> licensed under <a href='https://creativecommons.org/licenses/by/2.0'>CC BY 2.0</a></p>");
+      
       var images = ['/assets/standard1.jpg','/assets/standard2.jpg'];
       createSlider(images);
     }else if (localStorage.getItem('roomType') == 'Deluxe Room') {
@@ -131,6 +135,9 @@
         p = document.querySelector(roomFields[i]);
         p.textContent = roomDeluxe[i];
       }
+      citedSourcesDiv.append("<p><a href='https://commons.wikimedia.org/wiki/File:New_World_Petaling_Jaya_Hotel._2019-11-30_17-56-38.jpg#filelinks'>New World Petaling Jaya Hotel</a>, by <a href='https://commons.wikimedia.org/wiki/User:Shesmax'>Shesmax</a> licensed under <a href='https://creativecommons.org/licenses/by-sa/4.0/'>CC BY-SA 4.0</a></p>");
+      citedSourcesDiv.append("<p><a href='https://www.flickr.com/photos/hdv-gallery/6910235593'>Deluxe double room</a>, by <a href='https://www.flickr.com/photos/hdv-gallery/'>Hotel du Vin & Bistro</a> licensed under <a href='https://creativecommons.org/licenses/by/2.0'>CC BY 2.0</a></p>");
+      
       var images = ['/assets/deluxe1.jpg','/assets/deluxe2.jpg'];
       createSlider(images);
     }else if (localStorage.getItem('roomType') == 'Connecting Room') {
@@ -138,6 +145,9 @@
         p = document.querySelector(roomFields[i]);
         p.textContent = roomConnecting[i];
       }
+      citedSourcesDiv.append("<p><a href='https://creativecommons.org/licenses/by/2.0/, https://www.flickr.com/photos/portobaytrade/36893932826/in/photostream/'>hotel PORTOBAY RIO DE JANEIRO . Interconnecting Rooms</a>, by <a href='https://www.flickr.com/photos/portobaytrade/'>PortoBay Hotels & Resorts</a> licensed under <a href='https://creativecommons.org/licenses/by/2.0'>CC BY 2.0</a></p>");
+      citedSourcesDiv.append("<p><a href='https://www.flickr.com/photos/portobaytrade/27252229556/in/photostream/'>Deluxe double room</a>, by <a href='https://www.flickr.com/photos/portobaytrade/'>PBM_JuniorSuite_Back_WC</a> licensed under <a href='https://creativecommons.org/licenses/by/2.0'>CC BY 2.0</a></p>");
+
       var images = ['/assets/connecting1.jpg','/assets/connecting2.jpg'];
       createSlider(images);
     }else if (localStorage.getItem('roomType') == 'Suite Room') {
@@ -145,6 +155,9 @@
         p = document.querySelector(roomFields[i]);
         p.textContent = roomSuite[i];
       }
+      citedSourcesDiv.append("<p><a href='https://commons.wikimedia.org/wiki/File:Youma_Continental_Hotel.jpg'>Hotel</a>, by <a>youma continental hotel</a> licensed under <a href='https://creativecommons.org/licenses/by-sa/4.0/'>CC BY-SA 4.0</a></p>");
+      citedSourcesDiv.append("<p><a href='https://commons.wikimedia.org/wiki/File:Hotel_Suite_-_Living_Room_1.JPG'>Hotel Suite - Living Room</a>, by <a>Quant</a> licensed under <a href='https://creativecommons.org/licenses/by-sa/3.0/'>CC BY-SA 3.0</a></p>");
+      
       var images = ['/assets/suite1.jpg','/assets/suite2.jpg'];
       createSlider(images);
     }
